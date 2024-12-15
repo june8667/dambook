@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { isMobile } from "react-device-detect";
 import './App.css';
+import { Element } from "react-scroll";
 
 // 이미지 import
 import upArrow from './img/b-close.png';
@@ -8,6 +10,49 @@ import downArrow from './img/b-open.png';
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+  // 강제로 모바일로 테스트하기
+  //const forceMobile = true; // false로 변경하면 데스크탑처럼 동작
+  let mobileRatio = 1;
+  if (isMobile) {
+    mobileRatio = 0.5 * 0.5 * 0.8;
+  }
+
+
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    const viewportHeight = window.innerHeight;
+    const scale = window.devicePixelRatio; // 브라우저의 스케일 값
+    const newHeight = viewportHeight * scale; // 뷰포트 높이와 스케일 값을 곱함
+    setHeight(newHeight * mobileRatio); // 계산된 높이를 상태로 설정
+  }, []); // scale이 바뀔 때마다 실행
+
+  const [inView, setInView] = useState({
+    section1: false,
+    section3: false,
+    section4: false,
+  });
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setInView((prev) => ({
+            ...prev,
+            [entry.target.id]: entry.isIntersecting,
+          }));
+        });
+      },
+      { threshold: 0.3 } // 50% 이상 보일 때 트리거
+    );
+    // section1과 section2만 관찰
+    const sections = document.querySelectorAll(
+      "#section1, #section3, #section4"
+    );
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -38,6 +83,16 @@ function App() {
           ☰
         </button>
       )}
+
+      {/* 버튼 밑에 2x3 그리드 */}
+      <div className="grid-container">
+        <a href="#link1" className="grid-item">담부기건강내과</a>
+        <a href="#link2" className="grid-item">건강검진센터</a>
+        <a href="#link3" className="grid-item">내시경 클리닉</a>
+        <a href="#link4" className="grid-item">초음파 클리닉</a>
+        <a href="#link5" className="grid-item">건강 클리닉</a>
+        <a href="#link6" className="grid-item">비급여항목고지</a>
+      </div>
 
       {/* 네비게이션 오버레이 */}
       <div className={`overlay ${isNavOpen ? 'visible' : ''}`} onClick={closeNav}>
@@ -76,16 +131,76 @@ function App() {
 
       {/* 메인 콘텐츠 */}
       <main className="content">
-        <h1>Welcome to My Website</h1>
-        <p>Click the menu button to navigate.</p>
+        <Element
+          name="section1"
+          id="section1"
+          className="section1"
+          style={{ height: `${height}px` }}
+        >
+          <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
+            당신의 꿈을 응원합니다!
+          </div>
+          <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
+            당신의 자전거는 무엇입니까?
+          </div>
+          <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
+            당신은 Merida를 탑니까?
+          </div>
+        </Element>
+
+        {/* <Element name="section2" id="section2" className={`section2 ${inView ? 'in-view' : ''}`} style={{ height: `${height}px` }}> */}
+        <Element
+          name="section2"
+          id="section2"
+          className="section2"
+          style={{ height: `${height / 2}px` }}
+        >
+        </Element>
+        <Element
+          name="section3"
+          id="section3"
+          className="section3"
+          style={{ height: `${height}px` }}
+        >
+          <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
+            저는 담북이입니다.
+          </div>
+          <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
+            잘부탁드립니다.
+          </div>
+          <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
+            하하하
+          </div>
+        </Element>
+        <Element
+          name="section4"
+          id="section4"
+          className="section4"
+          style={{ height: `${height}px` }}
+        >
+          <div className={`section-text ${inView.section4 ? "in-view" : ""}`}>
+            반응형 텍스트에요
+          </div>
+          <div className={`section-text ${inView.section4 ? "in-view" : ""}`}>
+            이위치에서 에니메이션 합니다.
+          </div>
+          <div className={`section-text ${inView.section4 ? "in-view" : ""}`}>
+            Recat입니다.
+          </div>
+        </Element>
+        <Element
+          style={{ height: `${height}px` }}
+        >
+
+        </Element>
       </main>
 
       {/* 하단 고정 네비게이션 */}
       <footer className="bottom-nav">
-        <a href="#home" className="bottom-nav-item">Home</a>
-        <a href="#about" className="bottom-nav-item">About</a>
-        <a href="#services" className="bottom-nav-item">Services</a>
-        <a href="#contact" className="bottom-nav-item">Contact</a>
+        <a href="#home" className="bottom-nav-item">오시는길</a>
+        <a href="#about" className="bottom-nav-item">문의전화</a>
+        <a href="#services" className="bottom-nav-item">의료진안내</a>
+        <a href="#contact" className="bottom-nav-item">공식블로그</a>
       </footer>
     </div>
   );
