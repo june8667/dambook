@@ -1,38 +1,161 @@
+/* 기본 스타일 */
 .App {
+  font-family: Arial, sans-serif;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.menu-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* 오버레이 */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0); /* 초기 비가시 상태 */
+  visibility: hidden; /* 초기 상태 */
+  opacity: 0; /* 초기 투명 */
+  transition: visibility 0.3s, opacity 0.3s ease;
+}
+
+.overlay.visible {
+  background: rgba(0, 0, 0, 0.3); /* 반투명 배경 */
+  visibility: visible; /* 표시 */
+  opacity: 1; /* 불투명 */
+}
+
+/* 네비게이션 바 */
+.side-nav {
+  width: 70%; /* 7:3 비율 */
+  max-width: 300px;
+  height: 100%;
+  background: #333;
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: -70%; /* 숨김 */
+  top: 0;
+  transition: left 0.3s ease;
+}
+
+.side-nav.slide-in {
+  left: 0; /* 나타남 */
+}
+
+.side-nav.slide-out {
+  left: -70%; /* 숨김 */
+}
+
+.side-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-nav li {
+  margin: 20px 0;
+}
+
+.side-nav a,
+.menu-item {
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: left;
+}
+
+/* 하위 메뉴 스타일 */
+.sub-menu {
+  list-style: none;
+  padding-left: 20px; /* 들여쓰기 */
+  max-height: 0; /* 초기 숨김 상태 */
+  overflow: hidden;
+  transition: max-height 0.3s ease; /* 슬라이드 애니메이션 */
+}
+
+.sub-menu.open {
+  max-height: 200px; /* 충분히 큰 값 */
+}
+
+.sub-menu.closed {
+  max-height: 0; /* 숨김 */
+}
+
+.sub-menu li {
+  margin: 10px 0;
+}
+
+.sub-menu a {
+  font-size: 14px;
+  color: #ccc;
+  text-decoration: none;
+}
+
+/* 반투명 영역 */
+.transparent-section {
+  width: 30%; /* 7:3 비율 */
+  height: 100%;
+  cursor: pointer;
+}
+
+/* 메인 콘텐츠 */
+.content {
+  padding: 20px;
+  z-index: 1;
+}
+
+/* 하단 고정 네비게이션 스타일 */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #333;
+  padding: 10px 0;
+  z-index: 1000; /* 다른 요소보다 위에 표시 */
+}
+
+.bottom-nav-item {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bottom-nav-item:hover {
+  color: #00bcd4;
+  text-decoration: underline;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* 전체 레이아웃 조정 */
+.content {
+  padding-bottom: 60px; /* 하단 네비게이션 공간 확보 */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.submenu-toggle-icon {
+  width: 16px; /* 이미지의 너비 */
+  height: 16px; /* 이미지의 높이 */
+  margin-left: 10px; /* 텍스트와 이미지 간 간격 */
+  vertical-align: middle; /* 텍스트와 수평 정렬 */
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
