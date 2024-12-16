@@ -3,13 +3,14 @@ import { isMobile } from "react-device-detect";
 import './App.css';
 import { Element } from "react-scroll";
 
+import { BrowserRouter as Router, Route, Link, Routes, useNavigate } from 'react-router-dom';
+
 // 이미지 import
 import upArrow from './img/b-close.png';
 import downArrow from './img/b-open.png';
 
-function App() {
-  const [isNavOpen, setIsNavOpen] = useState(false);
-  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+{/* Page1 */}
+const Page1 = () => {
   // 강제로 모바일로 테스트하기
   //const forceMobile = true; // false로 변경하면 데스크탑처럼 동작
   let mobileRatio = 1;
@@ -54,6 +55,115 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  return (
+    <main className="content">
+      <Element
+        name="section1"
+        id="section1"
+        className="section1"
+        style={{ height: `${height}px` }}
+      >
+        <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
+          당신의 꿈을 응원합니다!
+        </div>
+        <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
+          당신의 자전거는 무엇입니까?
+        </div>
+        <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
+          당신은 Merida를 탑니까?
+        </div>
+      </Element>
+
+      {/* <Element name="section2" id="section2" className={`section2 ${inView ? 'in-view' : ''}`} style={{ height: `${height}px` }}> */}
+      <Element
+        name="section2"
+        id="section2"
+        className="section2"
+        style={{ height: `${height / 2}px` }}
+      >
+      </Element>
+      <Element
+        name="section3"
+        id="section3"
+        className="section3"
+        style={{ height: `${height}px` }}
+      >
+        <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
+          저는 담북이입니다.
+        </div>
+        <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
+          잘부탁드립니다.
+        </div>
+        <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
+          하하하
+        </div>
+      </Element>
+      <Element
+        name="section4"
+        id="section4"
+        className="section4"
+        style={{ height: `${height}px` }}
+      >
+        <div className={`section-text ${inView.section4 ? "in-view" : ""}`}>
+          반응형 텍스트에요
+        </div>
+        <div className={`section-text ${inView.section4 ? "in-view" : ""}`}>
+          이위치에서 에니메이션 합니다.
+        </div>
+        <div className={`section-text ${inView.section4 ? "in-view" : ""}`}>
+          Recat입니다.
+        </div>
+      </Element>
+      <Element
+        style={{ height: `${height}px` }}
+      >
+
+      </Element>
+    </main>
+
+  );
+};
+
+
+{/* Page2 */}
+const Page2 = () => {
+  return (
+    <h2 style={{marginTop: "300px", textAlign: "center"}}>Page2</h2>
+  )
+}
+
+{/* Page3 */}
+const Page3 = () => {
+  return (
+    <h2 style={{marginTop: "300px", textAlign: "center"}}>Page3</h2>
+  )
+}
+
+{/* Page4 */}
+const Page4 = () => {
+  return (
+    <h2 style={{marginTop: "300px", textAlign: "center"}}>Page4</h2>
+  )
+}
+
+{/* Page5 */}
+const Page5 = () => {
+  return (
+    <h2 style={{marginTop: "300px", textAlign: "center"}}>Page5</h2>
+  )
+}
+
+{/* Page6 */}
+const Page6 = () => {
+  return (
+    <h2 style={{marginTop: "300px", textAlign: "center"}}>Page6</h2>
+  )
+}
+
+function App() {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
@@ -68,6 +178,15 @@ function App() {
   const toggleSubMenu = () => {
     setIsSubMenuOpen(!isSubMenuOpen);
   };
+
+  const navigate = useNavigate();
+  // 페이지가 로드될 때 첫 번째 페이지로 리디렉션 (한 번만)
+  useEffect(() => {
+    // 이미 페이지가 로드되면 다시 리디렉션하지 않도록 조건 추가
+    if (window.location.pathname === '/') {
+      navigate('/page1');  // 처음에만 자동으로 /page1로 이동
+    }
+  }, [navigate]);
 
   return (
     <div className="App">
@@ -87,16 +206,16 @@ function App() {
       </div>
       {/* 버튼 밑에 2x3 그리드 */}
       <div className="grid-container">
-        <a href="#link1" className="grid-item">담부기건강내과</a>
-        <a href="#link2" className="grid-item">건강검진센터</a>
-        <a href="#link3" className="grid-item">내시경 클리닉</a>
-        <a href="#link4" className="grid-item">초음파 클리닉</a>
-        <a href="#link5" className="grid-item">건강 클리닉</a>
-        <a href="#link6" className="grid-item">비급여항목고지</a>
+        <Link to="/page1" className="grid-item">건강검진센터</Link>
+        <Link to="/page2" className="grid-item">담부기건강내과</Link>
+        <Link to="/page3" className="grid-item">내시경 클리닉</Link>
+        <Link to="/page4" className="grid-item">초음파 클리닉</Link>
+        <Link to="/page5" className="grid-item">건강 클리닉</Link>
+        <Link to="/page6" className="grid-item">비급여항목고지</Link>
       </div>
 
       {/* 네비게이션 오버레이 */}
-      <div style={{zIndex: "10000"}} className={`overlay ${isNavOpen ? 'visible' : ''}`} onClick={closeNav}>
+      <div style={{ zIndex: "10000" }} className={`overlay ${isNavOpen ? 'visible' : ''}`} onClick={closeNav}>
         {/* 네비게이션 바 */}
         <div
           className={`side-nav ${isNavOpen ? 'slide-in' : 'slide-out'}`}
@@ -131,70 +250,16 @@ function App() {
       </div>
 
       {/* 메인 콘텐츠 */}
-      <main className="content">
-        <Element
-          name="section1"
-          id="section1"
-          className="section1"
-          style={{ height: `${height}px` }}
-        >
-          <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
-            당신의 꿈을 응원합니다!
-          </div>
-          <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
-            당신의 자전거는 무엇입니까?
-          </div>
-          <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
-            당신은 Merida를 탑니까?
-          </div>
-        </Element>
 
-        {/* <Element name="section2" id="section2" className={`section2 ${inView ? 'in-view' : ''}`} style={{ height: `${height}px` }}> */}
-        <Element
-          name="section2"
-          id="section2"
-          className="section2"
-          style={{ height: `${height / 2}px` }}
-        >
-        </Element>
-        <Element
-          name="section3"
-          id="section3"
-          className="section3"
-          style={{ height: `${height}px` }}
-        >
-          <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
-            저는 담북이입니다.
-          </div>
-          <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
-            잘부탁드립니다.
-          </div>
-          <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
-            하하하
-          </div>
-        </Element>
-        <Element
-          name="section4"
-          id="section4"
-          className="section4"
-          style={{ height: `${height}px` }}
-        >
-          <div className={`section-text ${inView.section4 ? "in-view" : ""}`}>
-            반응형 텍스트에요
-          </div>
-          <div className={`section-text ${inView.section4 ? "in-view" : ""}`}>
-            이위치에서 에니메이션 합니다.
-          </div>
-          <div className={`section-text ${inView.section4 ? "in-view" : ""}`}>
-            Recat입니다.
-          </div>
-        </Element>
-        <Element
-          style={{ height: `${height}px` }}
-        >
+      <Routes>
+        <Route path="/page1" element={<Page1 />} />
+        <Route path="/page2" element={<Page2 />} />
+        <Route path="/page3" element={<Page3 />} />
+        <Route path="/page4" element={<Page4 />} />
+        <Route path="/page5" element={<Page5 />} />
+        <Route path="/page6" element={<Page6 />} />
+      </Routes>
 
-        </Element>
-      </main>
 
       {/* 하단 고정 네비게이션 */}
       <footer className="bottom-nav">
@@ -207,4 +272,11 @@ function App() {
   );
 }
 
-export default App;
+// Router로 App을 감싸주기
+export default function RootApp() {
+  return (
+    <Router> {/* BrowserRouter로 감싸야 useNavigate가 정상 동작 */}
+      <App />
+    </Router>
+  );
+}
