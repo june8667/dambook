@@ -26,10 +26,10 @@
 
 .menu-button {
   position: absolute;
-  position: fixed;
   left: 20px;
   font-size: 20px;
   background: none;
+  background-color: white;
   border: none;
   cursor: pointer;
   z-index: 1000;
@@ -181,7 +181,8 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 0px;
   padding: 0px;
-  margin-top: 30px;
+  margin-top: 40px;
+  z-index: 2000; /* 다른 요소보다 위에 표시 */
 }
 
 .grid-item {
@@ -216,7 +217,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-}
+} 
 
 .section2 {
   display: flex;
@@ -251,7 +252,7 @@
   flex-direction: column; /* 세로 방향 정렬 */
   justify-content: center; /* 세로 가운데 정렬 */
   align-items: Center;     /* 세로로 가운데 정렬 */
-  background-image: url('img/res3.jpg');
+  background-image: url('img/res4.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -267,9 +268,10 @@
 .section-text.in-view {
   align-items: center;     /* 세로로 가운데 정렬 */
   font-family: 'establish Retrosans', sans-serif;
-  font-size: 2rem;
+  font-size: 1.3rem;
   /* text-align: center; */
   text-align: left;
+  
   animation: fadeIn 1.5s ease-out;
   color: #fff;
   text-shadow: 

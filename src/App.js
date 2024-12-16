@@ -71,19 +71,20 @@ function App() {
 
   return (
     <div className="App">
-      {/* 햄버거 버튼 */}
-      {!isNavOpen && (
-        <button
-          className="menu-button"
-          onClick={(e) => {
-            e.stopPropagation();
-            toggleNav();
-          }}
-        >
-          ☰
-        </button>
-      )}
-
+      <div className="header" style={{ height: "10%", width: "100%", padding: "5px", backgroundColor: "white", position: "fixed", zIndex: "500" }}>
+        {/* 햄버거 버튼 */}
+        {!isNavOpen && (
+          <button
+            className="menu-button"
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleNav();
+            }}
+          >
+            ☰
+          </button>
+        )}
+      </div>
       {/* 버튼 밑에 2x3 그리드 */}
       <div className="grid-container">
         <a href="#link1" className="grid-item">담부기건강내과</a>
@@ -95,7 +96,7 @@ function App() {
       </div>
 
       {/* 네비게이션 오버레이 */}
-      <div className={`overlay ${isNavOpen ? 'visible' : ''}`} onClick={closeNav}>
+      <div style={{zIndex: "10000"}} className={`overlay ${isNavOpen ? 'visible' : ''}`} onClick={closeNav}>
         {/* 네비게이션 바 */}
         <div
           className={`side-nav ${isNavOpen ? 'slide-in' : 'slide-out'}`}
