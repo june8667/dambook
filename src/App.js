@@ -3,13 +3,13 @@ import { isMobile } from "react-device-detect";
 import './App.css';
 import { Element } from "react-scroll";
 
-import { BrowserRouter as Router, Route, Link, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Routes, useNavigate } from 'react-router-dom';
 
 // 이미지 import
 import upArrow from './img/b-close.png';
 import downArrow from './img/b-open.png';
 
-{/* Page1 */}
+{/* Page1 */ }
 const Page1 = () => {
   // 강제로 모바일로 테스트하기
   //const forceMobile = true; // false로 변경하면 데스크탑처럼 동작
@@ -125,38 +125,38 @@ const Page1 = () => {
 };
 
 
-{/* Page2 */}
+{/* Page2 */ }
 const Page2 = () => {
   return (
-    <h2 style={{marginTop: "300px", textAlign: "center"}}>Page2</h2>
+    <h2 style={{ marginTop: "300px", textAlign: "center" }}>Page2</h2>
   )
 }
 
-{/* Page3 */}
+{/* Page3 */ }
 const Page3 = () => {
   return (
-    <h2 style={{marginTop: "300px", textAlign: "center"}}>Page3</h2>
+    <h2 style={{ marginTop: "300px", textAlign: "center" }}>Page3</h2>
   )
 }
 
-{/* Page4 */}
+{/* Page4 */ }
 const Page4 = () => {
   return (
-    <h2 style={{marginTop: "300px", textAlign: "center"}}>Page4</h2>
+    <h2 style={{ marginTop: "300px", textAlign: "center" }}>Page4</h2>
   )
 }
 
-{/* Page5 */}
+{/* Page5 */ }
 const Page5 = () => {
   return (
-    <h2 style={{marginTop: "300px", textAlign: "center"}}>Page5</h2>
+    <h2 style={{ marginTop: "300px", textAlign: "center" }}>Page5</h2>
   )
 }
 
-{/* Page6 */}
+{/* Page6 */ }
 const Page6 = () => {
   return (
-    <h2 style={{marginTop: "300px", textAlign: "center"}}>Page6</h2>
+    <h2 style={{ marginTop: "300px", textAlign: "center" }}>Page6</h2>
   )
 }
 
@@ -206,12 +206,14 @@ function App() {
       </div>
       {/* 버튼 밑에 2x3 그리드 */}
       <div className="grid-container">
-        <Link to="/page1" className="grid-item">건강검진센터</Link>
-        <Link to="/page2" className="grid-item">담부기건강내과</Link>
-        <Link to="/page3" className="grid-item">내시경 클리닉</Link>
-        <Link to="/page4" className="grid-item">초음파 클리닉</Link>
-        <Link to="/page5" className="grid-item">건강 클리닉</Link>
-        <Link to="/page6" className="grid-item">비급여항목고지</Link>
+        <NavLink to="/page1" className={({ isActive }) =>
+          isActive ? "grid-item active" : "grid-item"
+        }>건강검진센터</NavLink>
+        <NavLink to="/page2" className="grid-item">담부기건강내과</NavLink>
+        <NavLink to="/page3" className="grid-item">내시경 클리닉</NavLink>
+        <NavLink to="/page4" className="grid-item">초음파 클리닉</NavLink>
+        <NavLink to="/page5" className="grid-item">건강 클리닉</NavLink>
+        <NavLink to="/page6" className="grid-item">비급여항목고지</NavLink>
       </div>
 
       {/* 네비게이션 오버레이 */}

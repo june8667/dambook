@@ -196,7 +196,7 @@
   font-size: 12px;
 }
 
-.grid-item:hover {
+.grid-item.active {
   background-color: #00bcd4;
   color: white;
 }
