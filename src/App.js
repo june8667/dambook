@@ -426,7 +426,7 @@ function App() {
       {/* 하단 고정 네비게이션 */}
       <footer className="bottom-nav">
         <a href="#home" className="bottom-nav-item">오시는길</a>
-        <a href="#about" className="bottom-nav-item">문의전화</a>
+        <a href="tel:123-456-7890" className="bottom-nav-item">문의전화</a>
         <a href="#services" className="bottom-nav-item">의료진안내</a>
         <a href="#contact" className="bottom-nav-item">공식블로그</a>
       </footer>
