@@ -254,7 +254,7 @@ const Page4 = () => {
       >
       </Element>
       <Element
-        style={{ height: `${height / 2}px`}}
+        style={{ height: `${height / 2}px` }}
       >
       </Element>
       <Element
@@ -447,7 +447,15 @@ const Page6 = () => {
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -456,13 +464,23 @@ function App() {
   const closeNav = () => {
     if (isNavOpen) {
       setIsNavOpen(false);
-      setIsSubMenuOpen(false); // 네비게이션 닫을 때 서브메뉴도 닫기
+      setIsSubMenuOpen([false, false, false, false, false, false]);
     }
   };
 
-  const toggleSubMenu = () => {
-    setIsSubMenuOpen(!isSubMenuOpen);
+  // 서브 메뉴 열기/닫기 함수
+  const toggleSubMenu = (index, value) => {
+    setIsSubMenuOpen(prevState => {
+      if (!Array.isArray(prevState)) {
+        console.error("State is not an array:", prevState); // 디버깅용 로그
+        return []; // 문제가 있다면 빈 배열로 초기화 (임시 대처)
+      }
+
+      return prevState.map((item, idx) => (idx === index ? value : item));
+    });
   };
+
+
 
   const navigate = useNavigate();
   // 페이지가 로드될 때 첫 번째 페이지로 리디렉션 (한 번만)
@@ -472,6 +490,7 @@ function App() {
       navigate('/page1');  // 처음에만 자동으로 /page1로 이동
     }
   }, [navigate]);
+
 
   return (
     <div className="App">
@@ -505,30 +524,79 @@ function App() {
       <div style={{ zIndex: "10000" }} className={`overlay ${isNavOpen ? 'visible' : ''}`} onClick={closeNav}>
         {/* 네비게이션 바 */}
         <div
+          style={{ padding: "0px" }}
           className={`side-nav ${isNavOpen ? 'slide-in' : 'slide-out'}`}
-          onClick={(e) => e.stopPropagation()}
+          onClick={(e) => e.stopPropagation()
+          }
         >
+          <div style={{ padding: "10px" }} />
           <ul>
             <li>
-              <button className="menu-item" onClick={toggleSubMenu}>
-                Home
+              <button className="menu-item" onClick={() => toggleSubMenu(0, !isSubMenuOpen[0])}>
+                담부기건강내과
                 {/* 상태에 따라 PNG 이미지를 변경 */}
                 <img
                   className="submenu-toggle-icon"
-                  src={isSubMenuOpen ? upArrow : downArrow}
-                  alt={isSubMenuOpen ? 'Collapse' : 'Expand'}
+                  src={isSubMenuOpen[0] ? upArrow : downArrow}
+                  alt={isSubMenuOpen[0] ? 'Collapse' : 'Expand'}
                 />
               </button>
               {/* 하위 항목 */}
-              <ul className={`sub-menu ${isSubMenuOpen ? 'open' : 'closed'}`}>
-                <li><a href="#home1">Sub Home 1</a></li>
-                <li><a href="#home2">Sub Home 2</a></li>
-                <li><a href="#home3">Sub Home 3</a></li>
+              <ul className={`sub-menu ${isSubMenuOpen[0] ? 'open' : 'closed'}`}>
+                <li><a href="#home1">의료진 소개</a></li>
+                <li><a href="#home2">진료 안내</a></li>
+                <li><a href="#home3">병원 둘러보기</a></li>
+                <li><a href="#home3">오시는 길</a></li>
               </ul>
             </li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li>
+              <button className="menu-item" onClick={() => toggleSubMenu(1, !isSubMenuOpen[1])}>
+                건강검진센터
+                {/* 상태에 따라 PNG 이미지를 변경 */}
+                <img
+                  className="submenu-toggle-icon"
+                  src={isSubMenuOpen[1] ? upArrow : downArrow}
+                  alt={isSubMenuOpen[1] ? 'Collapse' : 'Expand'}
+                />
+              </button>
+              {/* 하위 항목 */}
+              <ul className={`sub-menu ${isSubMenuOpen[1] ? 'open' : 'closed'}`}>
+                <li><a href="#home1">국가공단 건강검진</a></li>
+                <li><a href="#home2">5대암 검진</a></li>
+                <li><a href="#home3">채용 검진</a></li>
+              </ul>
+            </li>
+            <li>
+              <button className="menu-item" onClick={() => toggleSubMenu(2, !isSubMenuOpen[2])}>
+                내시경 클리닉
+                {/* 상태에 따라 PNG 이미지를 변경 */}
+                <img
+                  className="submenu-toggle-icon"
+                  src={isSubMenuOpen[2] ? upArrow : downArrow}
+                  alt={isSubMenuOpen[2] ? 'Collapse' : 'Expand'}
+                />
+              </button>
+              {/* 하위 항목 */}
+              <ul className={`sub-menu ${isSubMenuOpen[2] ? 'open' : 'closed'}`}>
+                <li><a href="#home1">위대장 내시경</a></li>
+                <li><a href="#home2">용종절제술</a></li>
+              </ul>
+            </li>
+            <li>
+              <button className="menu-item">
+                초음파 클리닉
+              </button>
+            </li>
+            <li>
+              <button className="menu-item">
+                건강 클리닉
+              </button>
+            </li>
+            <li>
+              <button className="menu-item">
+                비급여항목고지
+              </button>
+            </li>
           </ul>
         </div>
 
