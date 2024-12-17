@@ -139,7 +139,7 @@
 .content {
   overflow-y: scroll;
   padding: 0px;
-  margin-top: 60px;
+  margin-top: 70px;
   z-index: 1;
 }
 
@@ -174,7 +174,7 @@
 }
 
 /* 2x3 그리드 스타일 */
-.grid-container {
+.grid-container-nav {
   position: fixed;
   display: grid;
   width: 100%;
@@ -183,6 +183,26 @@
   padding: 0px;
   margin-top: 40px;
   z-index: 2000; /* 다른 요소보다 위에 표시 */
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 0px;
+  background-color: #fff;
+  padding: 10px;
+  border: px solid #ccc;
+  border-radius: 0px;
+  margin-top: 40px;
+}
+
+.grid-container-item {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-decoration: dotted;
+  font-size: 12px;
 }
 
 .grid-item {

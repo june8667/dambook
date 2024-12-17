@@ -125,38 +125,198 @@ const Page1 = () => {
 };
 
 
-{/* Page2 */ }
+{/* Page2 : 담부기건강내과 */ }
 const Page2 = () => {
-  return (
-    <h2 style={{ marginTop: "300px", textAlign: "center" }}>Page2</h2>
-  )
+  return ;
 }
 
-{/* Page3 */ }
+{/* Page3 : 내시경 클리닉 */ }
 const Page3 = () => {
   return (
     <h2 style={{ marginTop: "300px", textAlign: "center" }}>Page3</h2>
   )
 }
 
-{/* Page4 */ }
+{/* Page4 : 초음파 클리닉 */ }
 const Page4 = () => {
   return (
     <h2 style={{ marginTop: "300px", textAlign: "center" }}>Page4</h2>
   )
 }
 
-{/* Page5 */ }
+{/* Page5 : 건강 클리닉 */ }
 const Page5 = () => {
   return (
     <h2 style={{ marginTop: "300px", textAlign: "center" }}>Page5</h2>
   )
 }
 
-{/* Page6 */ }
+{/* Page6 : 비급여항목고지 */ }
 const Page6 = () => {
   return (
-    <h2 style={{ marginTop: "300px", textAlign: "center" }}>Page6</h2>
+    <main className="content">
+      <div class="grid-container">
+        <div class="grid-container-item">항목</div>
+        <div class="grid-container-item">검사 종류</div>
+        <div class="grid-container-item">비용</div>
+
+        <div class="grid-container-item">내시경 진정관리료</div>
+        <div class="grid-container-item">위내시경 진정관리료</div>
+        <div class="grid-container-item">50,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">대장내시경 진정관리료</div>
+        <div class="grid-container-item">70,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">위 + 대장 내시경 진정관리료</div>
+        <div class="grid-container-item">100,000원</div>
+
+        <div class="grid-container-item">초음파 검사</div>
+        <div class="grid-container-item">상복부 초음파</div>
+        <div class="grid-container-item">50,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">하복부 초음파</div>
+        <div class="grid-container-item">40,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">상+하복부 초음파</div>
+        <div class="grid-container-item">80,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">상+하복부+갑상선+경동맥</div>
+        <div class="grid-container-item">150,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">상+하복부+갑상선+경동맥+유방</div>
+        <div class="grid-container-item">210,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">상복부+갑상선+경동맥</div>
+        <div class="grid-container-item">130,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">충수 초음파</div>
+        <div class="grid-container-item">40,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">유방 초음파</div>
+        <div class="grid-container-item">70,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">갑상선 초음파</div>
+        <div class="grid-container-item">40,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">경동맥 초음파</div>
+        <div class="grid-container-item">40,000원</div>
+
+        <div class="grid-container-item">예방 접종</div>
+        <div class="grid-container-item">A형 간염</div>
+        <div class="grid-container-item">75,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">B형 간염</div>
+        <div class="grid-container-item">25,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">스카이조스터 (대상포진)</div>
+        <div class="grid-container-item">150,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">싱그릭스 (대상포진)</div>
+        <div class="grid-container-item">250,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">2회 결제 시</div>
+        <div class="grid-container-item">230,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">조스타박스 (대상포진)</div>
+        <div class="grid-container-item">160,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">프리베나</div>
+        <div class="grid-container-item">120,000원</div>
+
+        <div class="grid-container-item">주사</div>
+        <div class="grid-container-item">비타민D</div>
+        <div class="grid-container-item">30,000원</div>
+
+        <div class="grid-container-item">검사</div>
+        <div class="grid-container-item">인플루엔자 검사</div>
+        <div class="grid-container-item">35,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">신속항원 검사</div>
+        <div class="grid-container-item">30,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">듀얼키트 검사 (코로나, 독감)</div>
+        <div class="grid-container-item">40,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">골밀도 검사 (2부위)</div>
+        <div class="grid-container-item">40,000원</div>
+
+        <div class="grid-container-item">서류</div>
+        <div class="grid-container-item">일반 진단서</div>
+        <div class="grid-container-item">10,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">일반 진단서 (영문)</div>
+        <div class="grid-container-item">20,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">소견서</div>
+        <div class="grid-container-item">3,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">건강진단서 (TBPE)</div>
+        <div class="grid-container-item">20,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">건강진단서 (TBPE, X-ray)</div>
+        <div class="grid-container-item">30,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">기숙사 건강진단서 (X-ray 비급여)</div>
+        <div class="grid-container-item">20,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">통원확인서</div>
+        <div class="grid-container-item">3,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">보건증</div>
+        <div class="grid-container-item">25,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">진료확인서</div>
+        <div class="grid-container-item">1,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">공무원 채용신체검사서</div>
+        <div class="grid-container-item">40,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">일반 채용신체검사서</div>
+        <div class="grid-container-item">30,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">진료기록사본 (1~5매)</div>
+        <div class="grid-container-item">3,000원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">진료기록사본 (6매 이상)</div>
+        <div class="grid-container-item">100원</div>
+
+        <div class="grid-container-item"></div>
+        <div class="grid-container-item">진료 기록 (영상) 복사</div>
+        <div class="grid-container-item">10,000원</div>
+      </div>
+    </main>
   )
 }
 
@@ -205,7 +365,7 @@ function App() {
         )}
       </div>
       {/* 버튼 밑에 2x3 그리드 */}
-      <div className="grid-container">
+      <div className="grid-container-nav">
         <NavLink to="/page1" className={({ isActive }) =>
           isActive ? "grid-item active" : "grid-item"
         }>건강검진센터</NavLink>
