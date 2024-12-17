@@ -4,16 +4,16 @@
     width: 100%;
   }
   
-  .slider-images {
+    .slider-images {
     display: flex;
     transition: transform 0.5s ease-in-out;
-  }
-  
-  .slider-image {
+    }
+
+    .slider-image {
     min-width: 100%;
     background-size: cover;
     background-position: center;
-  }
+    }
   
   .prev-button,
   .next-button {
