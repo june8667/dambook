@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { isMobile } from "react-device-detect";
 import './App.css';
 import { Element } from "react-scroll";
+import ImageSlider from "./ImageSlider";
 
 import { BrowserRouter as Router, Route, NavLink, Routes, useNavigate } from 'react-router-dom';
 
@@ -20,6 +21,9 @@ import ysh07 from './img/ysh/ysh-07.jpg';
 
 {/* Page1 */ }
 const Page1 = () => {
+
+  const images = [ysh01, ysh02, ysh03];
+
   // 강제로 모바일로 테스트하기
   //const forceMobile = true; // false로 변경하면 데스크탑처럼 동작
   let mobileRatio = 1;
@@ -91,13 +95,14 @@ const Page1 = () => {
         style={{ height: `${height / 2}px` }}
       >
       </Element>
+        <ImageSlider images={images} height={300} />
       <Element
         name="section3"
         id="section3"
         className="section3"
         style={{ height: `${height}px` }}
       >
-       {/*  <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
+        {/*  <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
           저는 담북이입니다.
         </div>
         <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
