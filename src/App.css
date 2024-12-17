@@ -59,15 +59,15 @@
 
 /* 네비게이션 바 */
 .side-nav {
-  width: 70%; /* 7:3 비율 */
+  width: 50%; /* 7:3 비율 */
   max-width: 300px;
   height: 100%;
-  background: #333;
-  color: white;
+  background: white;
+  color: black;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
   position: fixed;
-  left: -70%; /* 숨김 */
+  left: -50%; /* 숨김 */
   top: 0;
   transition: left 0.3s ease;
 }
@@ -77,7 +77,7 @@
 }
 
 .side-nav.slide-out {
-  left: -70%; /* 숨김 */
+  left: -50%; /* 숨김 */
 }
 
 .side-nav ul {
@@ -92,7 +92,7 @@
 
 .side-nav a,
 .menu-item {
-  color: white;
+  color: black;
   text-decoration: none;
   background: none;
   border: none;

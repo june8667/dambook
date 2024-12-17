@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, NavLink, Routes, useNavigate } from 're
 // 이미지 import
 import upArrow from './img/b-close.png';
 import downArrow from './img/b-open.png';
+import ysh01 from './img/ysh/ysh-01.jpg';
 
 {/* Page1 */ }
 const Page1 = () => {
@@ -127,7 +128,50 @@ const Page1 = () => {
 
 {/* Page2 : 담부기건강내과 */ }
 const Page2 = () => {
-  return ;
+
+  // 강제로 모바일로 테스트하기
+  //const forceMobile = true; // false로 변경하면 데스크탑처럼 동작
+  let mobileRatio = 1;
+  if (isMobile) {
+    mobileRatio = 0.5 * 0.5 * 0.8;
+  }
+
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    const viewportHeight = window.innerHeight;
+    const scale = window.devicePixelRatio; // 브라우저의 스케일 값
+    const newHeight = viewportHeight * scale; // 뷰포트 높이와 스케일 값을 곱함
+    setHeight(newHeight * mobileRatio); // 계산된 높이를 상태로 설정
+  }, []); // scale이 바뀔 때마다 실행
+
+  return (
+    <main className="content">
+      <Element
+        style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh01})`, backgroundSize: 'cover' }}
+      >
+      </Element>
+
+      {/* <Element name="section2" id="section2" className={`section2 ${inView ? 'in-view' : ''}`} style={{ height: `${height}px` }}> */}
+      <Element
+        style={{ height: `${height / 2}px` }}
+      >
+      </Element>
+      <Element
+        style={{ height: `${height}px` }}
+      >
+      </Element>
+      <Element
+        style={{ height: `${height}px` }}
+      >
+      </Element>
+      <Element
+        style={{ height: `${height}px` }}
+      >
+
+      </Element>
+    </main>
+  )
 }
 
 {/* Page3 : 내시경 클리닉 */ }
