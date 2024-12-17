@@ -8,7 +8,15 @@ import { BrowserRouter as Router, Route, NavLink, Routes, useNavigate } from 're
 // 이미지 import
 import upArrow from './img/b-close.png';
 import downArrow from './img/b-open.png';
+
+// 연세건강드리임내과 훅킹 이미지
 import ysh01 from './img/ysh/ysh-01.jpg';
+import ysh02 from './img/ysh/ysh-02.jpg';
+import ysh03 from './img/ysh/ysh-03.jpg';
+import ysh04 from './img/ysh/ysh-04.jpg';
+import ysh05 from './img/ysh/ysh-05.jpg';
+import ysh06 from './img/ysh/ysh-06.jpg';
+import ysh07 from './img/ysh/ysh-07.jpg';
 
 {/* Page1 */ }
 const Page1 = () => {
@@ -151,8 +159,104 @@ const Page2 = () => {
         style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh01})`, backgroundSize: 'cover' }}
       >
       </Element>
+      <Element
+        style={{ height: `${height / 2}px` }}
+      >
+      </Element>
+      <Element
+        style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh02})`, backgroundSize: 'cover' }}
+      >
+      </Element>
+      <Element
+        style={{ height: `${height / 2}px` }}
+      >
+      </Element>
+      <Element
+        style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh03})`, backgroundSize: 'cover' }}
+      >
+      </Element>
+    </main>
+  )
+}
+
+{/* Page3 : 내시경 클리닉 */ }
+const Page3 = () => {
+  // 강제로 모바일로 테스트하기
+  //const forceMobile = true; // false로 변경하면 데스크탑처럼 동작
+  let mobileRatio = 1;
+  if (isMobile) {
+    mobileRatio = 0.5 * 0.5 * 0.8;
+  }
+
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    const viewportHeight = window.innerHeight;
+    const scale = window.devicePixelRatio; // 브라우저의 스케일 값
+    const newHeight = viewportHeight * scale; // 뷰포트 높이와 스케일 값을 곱함
+    setHeight(newHeight * mobileRatio); // 계산된 높이를 상태로 설정
+  }, []); // scale이 바뀔 때마다 실행
+
+  return (
+    <main className="content">
+      <Element
+        style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh04})`, backgroundSize: 'cover' }}
+      >
+      </Element>
+      <Element
+        style={{ height: `${height / 2}px` }}
+      >
+      </Element>
+      <Element
+        style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh05})`, backgroundSize: 'cover' }}
+      >
+      </Element>
+      <Element
+        style={{ height: `${height / 2}px` }}
+      >
+      </Element>
+      <Element
+        style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh06})`, backgroundSize: 'cover' }}
+      >
+      </Element>
+    </main>
+  )
+}
+
+{/* Page4 : 초음파 클리닉 */ }
+const Page4 = () => {
+  // 강제로 모바일로 테스트하기
+  //const forceMobile = true; // false로 변경하면 데스크탑처럼 동작
+  let mobileRatio = 1;
+  if (isMobile) {
+    mobileRatio = 0.5 * 0.5 * 0.8;
+  }
+
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    const viewportHeight = window.innerHeight;
+    const scale = window.devicePixelRatio; // 브라우저의 스케일 값
+    const newHeight = viewportHeight * scale; // 뷰포트 높이와 스케일 값을 곱함
+    setHeight(newHeight * mobileRatio); // 계산된 높이를 상태로 설정
+  }, []); // scale이 바뀔 때마다 실행
+
+  return (
+    <main className="content">
+      <Element
+        style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh07})`, backgroundSize: 'cover' }}
+      >
+      </Element>
 
       {/* <Element name="section2" id="section2" className={`section2 ${inView ? 'in-view' : ''}`} style={{ height: `${height}px` }}> */}
+      <Element
+        style={{ height: `${height / 2}px` }}
+      >
+      </Element>
+      <Element
+        style={{ height: `${height / 2}px`}}
+      >
+      </Element>
       <Element
         style={{ height: `${height / 2}px` }}
       >
@@ -161,30 +265,7 @@ const Page2 = () => {
         style={{ height: `${height}px` }}
       >
       </Element>
-      <Element
-        style={{ height: `${height}px` }}
-      >
-      </Element>
-      <Element
-        style={{ height: `${height}px` }}
-      >
-
-      </Element>
     </main>
-  )
-}
-
-{/* Page3 : 내시경 클리닉 */ }
-const Page3 = () => {
-  return (
-    <h2 style={{ marginTop: "300px", textAlign: "center" }}>Page3</h2>
-  )
-}
-
-{/* Page4 : 초음파 클리닉 */ }
-const Page4 = () => {
-  return (
-    <h2 style={{ marginTop: "300px", textAlign: "center" }}>Page4</h2>
   )
 }
 
