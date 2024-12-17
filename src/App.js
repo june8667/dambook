@@ -72,7 +72,7 @@ const Page1 = () => {
         className="section1"
         style={{ height: `${height}px` }}
       >
-        <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
+        {/* <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
           당신의 꿈을 응원합니다!
         </div>
         <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
@@ -80,7 +80,7 @@ const Page1 = () => {
         </div>
         <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
           당신은 Merida를 탑니까?
-        </div>
+        </div> */}
       </Element>
 
       {/* <Element name="section2" id="section2" className={`section2 ${inView ? 'in-view' : ''}`} style={{ height: `${height}px` }}> */}
@@ -97,7 +97,7 @@ const Page1 = () => {
         className="section3"
         style={{ height: `${height}px` }}
       >
-        <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
+       {/*  <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
           저는 담북이입니다.
         </div>
         <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
@@ -105,7 +105,7 @@ const Page1 = () => {
         </div>
         <div className={`section-text ${inView.section3 ? "in-view" : ""}`}>
           하하하
-        </div>
+        </div> */}
       </Element>
       <Element
         name="section4"
@@ -113,7 +113,7 @@ const Page1 = () => {
         className="section4"
         style={{ height: `${height}px` }}
       >
-        <div className={`section-text ${inView.section4 ? "in-view" : ""}`}>
+        {/* <div className={`section-text ${inView.section4 ? "in-view" : ""}`}>
           반응형 텍스트에요
         </div>
         <div className={`section-text ${inView.section4 ? "in-view" : ""}`}>
@@ -121,7 +121,7 @@ const Page1 = () => {
         </div>
         <div className={`section-text ${inView.section4 ? "in-view" : ""}`}>
           Recat입니다.
-        </div>
+        </div> */}
       </Element>
       <Element
         style={{ height: `${height}px` }}
