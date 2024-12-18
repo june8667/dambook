@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { isMobile } from "react-device-detect";
 import './App.css';
 import { Element } from "react-scroll";
 import ImageSlider from "./ImageSlider";
+import useHeight from "./util";
 
 import { BrowserRouter as Router, Route, NavLink, Routes, useNavigate } from 'react-router-dom';
 
@@ -24,22 +24,7 @@ const Page1 = () => {
 
   const images = [ysh01, ysh02, ysh03];
 
-  // 강제로 모바일로 테스트하기
-  //const forceMobile = true; // false로 변경하면 데스크탑처럼 동작
-  let mobileRatio = 1;
-  if (isMobile) {
-    mobileRatio = 0.5 * 0.5 * 0.8;
-  }
-
-
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    const viewportHeight = window.innerHeight;
-    const scale = window.devicePixelRatio; // 브라우저의 스케일 값
-    const newHeight = viewportHeight * scale; // 뷰포트 높이와 스케일 값을 곱함
-    setHeight(newHeight * mobileRatio); // 계산된 높이를 상태로 설정
-  }, []); // scale이 바뀔 때마다 실행
+  const height  = useHeight();
 
   const [inView, setInView] = useState({
     section1: false,
@@ -80,7 +65,7 @@ const Page1 = () => {
         name="section1"
         id="section1"
         className="section1"
-        style={{ height: `${height}px` }}
+        style={{ height: `${height / 2}px` }}
       >
         {/* <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
           당신의 꿈을 응원합니다!
@@ -148,21 +133,7 @@ const Page1 = () => {
 {/* Page2 : 건강검진센터 */ }
 const Page2 = () => {
 
-  // 강제로 모바일로 테스트하기
-  //const forceMobile = true; // false로 변경하면 데스크탑처럼 동작
-  let mobileRatio = 1;
-  if (isMobile) {
-    mobileRatio = 0.5 * 0.5 * 0.8;
-  }
-
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    const viewportHeight = window.innerHeight;
-    const scale = window.devicePixelRatio; // 브라우저의 스케일 값
-    const newHeight = viewportHeight * scale; // 뷰포트 높이와 스케일 값을 곱함
-    setHeight(newHeight * mobileRatio); // 계산된 높이를 상태로 설정
-  }, []); // scale이 바뀔 때마다 실행
+  const height  = useHeight();
 
   return (
     <main className="content">
@@ -213,21 +184,8 @@ const Page2 = () => {
 
 {/* Page3 : 내시경 클리닉 */ }
 const Page3 = () => {
-  // 강제로 모바일로 테스트하기
-  //const forceMobile = true; // false로 변경하면 데스크탑처럼 동작
-  let mobileRatio = 1;
-  if (isMobile) {
-    mobileRatio = 0.5 * 0.5 * 0.8;
-  }
-
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    const viewportHeight = window.innerHeight;
-    const scale = window.devicePixelRatio; // 브라우저의 스케일 값
-    const newHeight = viewportHeight * scale; // 뷰포트 높이와 스케일 값을 곱함
-    setHeight(newHeight * mobileRatio); // 계산된 높이를 상태로 설정
-  }, []); // scale이 바뀔 때마다 실행
+  
+  const height  = useHeight();
 
   return (
     <main className="content">
@@ -276,21 +234,8 @@ const Page3 = () => {
 
 {/* Page4 : 초음파 클리닉 */ }
 const Page4 = () => {
-  // 강제로 모바일로 테스트하기
-  //const forceMobile = true; // false로 변경하면 데스크탑처럼 동작
-  let mobileRatio = 1;
-  if (isMobile) {
-    mobileRatio = 0.5 * 0.5 * 0.8;
-  }
-
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    const viewportHeight = window.innerHeight;
-    const scale = window.devicePixelRatio; // 브라우저의 스케일 값
-    const newHeight = viewportHeight * scale; // 뷰포트 높이와 스케일 값을 곱함
-    setHeight(newHeight * mobileRatio); // 계산된 높이를 상태로 설정
-  }, []); // scale이 바뀔 때마다 실행
+  
+  const height  = useHeight();
 
   return (
     <main className="content">
@@ -351,6 +296,7 @@ const Page4 = () => {
 
 {/* Page5 : 건강 클리닉 */ }
 const Page5 = () => {
+
   return (
     <main className="content">
       {/* 건강 클리닉 설명 */}
