@@ -328,3 +328,19 @@ li {
         2px -2px 0px rgb(37, 36, 36),  /* 오른쪽 위 */
        -2px -2px 0px rgb(37, 36, 36);  /* 왼쪽 위 */
 }
+
+
+.animated-text {
+  opacity: 0; /* 처음에는 투명 */
+  transform: scale(0.5); /* 처음에는 작게 */
+  animation: fadeIn 1.5s ease forwards; /* 애니메이션 적용 */
+}
+
+.desc {
+  margin: 0;
+  padding: 0;
+  color: grey;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+}

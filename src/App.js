@@ -95,7 +95,7 @@ const Page1 = () => {
         style={{ height: `${height / 2}px` }}
       >
       </Element>
-        <ImageSlider images={images} height={300} />
+      <ImageSlider images={images} height={300} />
       <Element
         name="section3"
         id="section3"
@@ -248,6 +248,35 @@ const Page4 = () => {
 
   return (
     <main className="content">
+       {/* 건강 클리닉 설명 */}
+       < div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }
+      }>
+        <p style={{ margin: "0 0 3px 0", padding: "0px", color: "lightsteelblue", fontSize: "30px", fontWeight: "bold", textAlign: "center" }}>
+          <br />[초음파 검사란?]<br /><br />
+        </p>
+        <p className="desc">
+          초음파 영상은<br />
+          우리 귀에 들리지 않는 높은 주파수의 음파를<br />
+          인체 표면에서 인체 내부로 보낸 후 내부에서<br />
+          반사되는 음파를 영상화 시킨 것을 말합니다.<br />
+          <br />
+        </p>
+        <p className="desc">
+          초음파 검사는<br />
+          초음파 영상을 실시간으로 얻기 때문에<br />
+          장기의 구조 뿐만 아니라 운동까지 관찰할 수 있으며,<br />
+          혈관 내부의 혈류도 측정할 수 있습니다.<br />
+          <br />
+        </p>
+        <p className="desc">
+          인체에 무해하고<br />
+          검사를 할 수 있어 환자가 가진 질병을 진단하거나<br />
+          그 치료 결과를 판단하기에 유용하고<br />
+          편리한 영상 검사법입니다.<br />
+          <br />
+          <br />
+        </p>
+      </div >
       <Element
         style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh07})`, backgroundSize: 'cover' }}
       >
@@ -277,7 +306,19 @@ const Page4 = () => {
 {/* Page5 : 건강 클리닉 */ }
 const Page5 = () => {
   return (
-    <h2 style={{ marginTop: "300px", textAlign: "center" }}>Page5</h2>
+    <main className="content">
+      {/* 건강 클리닉 설명 */}
+      < div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }
+      }>
+        <p style={{ margin: "0 0 3px 0", padding: "0px", color: "lightsteelblue", fontSize: "30px", fontWeight: "bold", textAlign: "center" }}>
+          <br />[건강 클리닉]<br /><br />
+        </p>
+        <p className="desc">
+          개인별 맞춤 건강 솔루션<br />
+          담부기건강내과 건강클리닉입니다.
+        </p>
+      </div >
+    </main>
   )
 }
 
@@ -285,20 +326,16 @@ const Page5 = () => {
 const Page6 = () => {
   return (
     <main className="content">
-      <Element
-        style={{ height: "50px" }}
-      ></Element>
-
-      {/* 비급여항목고지설명 */}
-      <div style={{ display : "flext", flexDirection : "column",  padding :"10px", backgroundColor: "white", justifyItems: "center"}}>
-          <p style={{margin : "0 0 3px 0", padding : "0px", color : "lightsteelblue",  fontSize : "30px", fontWeight: "bold", textAlign: "center"}}>
-          <br/>[비급여항목고지]<br/><br/>
-          </p>
-          <p style={{margin : 0, padding : "0px", color: "grey",   fontSize : "16px", textAlign: "center"}}>
-            의료법 제 45조 제1항 및 제2항과 동법 시행규칙<br/>
-            제 42조의 제1항, 제2항 및 제3항에 의하여<br/>
-            비급여 진료 비용을 안내드립니다.
-          </p>
+      {/* 비급여항목고지 설명 */}
+      <div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }}>
+        <p style={{ margin: "0 0 3px 0", padding: "0px", color: "lightsteelblue", fontSize: "30px", fontWeight: "bold", textAlign: "center" }}>
+          <br />[비급여항목고지]<br /><br />
+        </p>
+        <p style={{ margin: 0, padding: "0px", color: "grey", fontSize: "16px", textAlign: "center" }}>
+          의료법 제 45조 제1항 및 제2항과 동법 시행규칙<br />
+          제 42조의 제1항, 제2항 및 제3항에 의하여<br />
+          비급여 진료 비용을 안내드립니다.
+        </p>
       </div>
       <div class="grid-container">
         <div class="grid-container-item">항목</div>
@@ -625,6 +662,9 @@ function App() {
       </div>
 
       {/* 메인 콘텐츠 */}
+      <Element
+        style={{ height: "50px" }}
+      ></Element>
 
       <Routes>
         <Route path="/page1" element={<Page1 />} />
@@ -636,14 +676,14 @@ function App() {
       </Routes>
 
       {/* 하단 설명 */}
-      <div style={{ padding :"10px", backgroundColor: "gray", color: "white" }}>
-          <p style={{margin : "0 0 3px 0", padding : "0px", fontSize : "15px", fontWeight: "bold"}}>담부기건강내과의원</p>
-          <p style={{margin : 0, padding : "0px",  fontSize : "12px"}}>
-            주소: 서울특별시 XX구 XX로 220 3층 (논현동, 중앙대파빌딩)<br/>
-            전화번호 : 02-466-4646<br/>
-            사업자등록번호 : XXX-XX-XXXXX<br/>
-            <br/>
-          </p>
+      <div style={{ padding: "10px", backgroundColor: "gray", color: "white" }}>
+        <p style={{ margin: "0 0 3px 0", padding: "0px", fontSize: "15px", fontWeight: "bold" }}>담부기건강내과의원</p>
+        <p style={{ margin: 0, padding: "0px", fontSize: "12px" }}>
+          주소: 서울특별시 XX구 XX로 220 3층 (논현동, 중앙대파빌딩)<br />
+          전화번호 : 02-466-4646<br />
+          사업자등록번호 : XXX-XX-XXXXX<br />
+          <br />
+        </p>
       </div>
       <Element
         style={{ height: "30px" }}
