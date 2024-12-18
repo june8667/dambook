@@ -620,6 +620,18 @@ function App() {
         <Route path="/page6" element={<Page6 />} />
       </Routes>
 
+      {/* 하단 설명 */}
+      <div style={{ padding :"10px", backgroundColor: "gray", color: "white" }}>
+          <p style={{margin : "0 0 3px 0", padding : "0px", fontSize : "15px", fontWeight: "bold"}}>담부기건강내과의원</p>
+          <p style={{margin : 0, padding : "0px",  fontSize : "12px"}}>
+            주소: 서울특별시 XX구 XX로 220 3층 (논현동, 중앙대파빌딩)<br/>
+            전화번호 : 02-466-4646<br/>
+            사업자등록번호 : XXX-XX-XXXXX<br/>
+            <br/>
+            <br/>
+          </p>
+      </div>
+
 
       {/* 하단 고정 네비게이션 */}
       <footer className="bottom-nav">
