@@ -19,7 +19,7 @@ import ysh05 from './img/ysh/ysh-05.jpg';
 import ysh06 from './img/ysh/ysh-06.jpg';
 import ysh07 from './img/ysh/ysh-07.jpg';
 
-{/* Page1 */ }
+{/* Page1 : 담부기건강내과*/ }
 const Page1 = () => {
 
   const images = [ysh01, ysh02, ysh03];
@@ -70,6 +70,12 @@ const Page1 = () => {
 
   return (
     <main className="content">
+      {/* 건강검진센터 설명 */}
+      <div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }}>
+        <p style={{ margin: "0 0 3px 0", padding: "0px", color: "lightsteelblue", fontSize: "32px", fontWeight: "bold", textAlign: "center" }}>
+          <br />[의료진 소개]<br /><br />
+        </p>
+      </div>
       <Element
         name="section1"
         id="section1"
@@ -139,7 +145,7 @@ const Page1 = () => {
 };
 
 
-{/* Page2 : 담부기건강내과 */ }
+{/* Page2 : 건강검진센터 */ }
 const Page2 = () => {
 
   // 강제로 모바일로 테스트하기
@@ -164,6 +170,27 @@ const Page2 = () => {
         style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh01})`, backgroundSize: 'cover' }}
       >
       </Element>
+      {/* 건강검진센터 설명 */}
+      <div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }}>
+        <p style={{ margin: "0 0 3px 0", padding: "0px", color: "lightsteelblue", fontSize: "28px", fontWeight: "bold", textAlign: "center" }}>
+          <br />[담부기건강내과 건강검진센터]<br /><br />
+        </p>
+        <p className="desc" style={{ fontSize: "20px", color: "black" }}>
+          지역 주민분들께<br />
+          가까이 다가서는 건강검진센터,<br />
+          바로 담부기건강내과 압니다.<br />
+          <br />
+          <br />
+        </p>
+        <p className="desc">
+          담부기건강내과의 검강검진센터는<br />
+          <span className="desc" style={{ color: "blue" }}>
+            최상위 검진 장비, 실력 있는 전문 의료진,<br />
+            세심한 진료, 쾌적한 검진 환경을 통해<br />
+          </span>
+          대학 병원급 건강 검진 서비스를 제공합니다.
+        </p>
+      </div>
       <Element
         style={{ height: `${height / 2}px` }}
       >
@@ -208,10 +235,29 @@ const Page3 = () => {
         style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh04})`, backgroundSize: 'cover' }}
       >
       </Element>
-      <Element
-        style={{ height: `${height / 2}px` }}
-      >
-      </Element>
+      {/* 담부기내과 내시경클리닉 설명 */}
+      <div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }}>
+        <p style={{ margin: "0 0 3px 0", padding: "0px", color: "lightsteelblue", fontSize: "30px", fontWeight: "bold", textAlign: "center" }}>
+          <br />[담부기내과 내시경클리닉]<br /><br />
+        </p>
+        <p className="desc" style={{ fontSize: "20px", color: "black" }}>
+          전문적인 검사, 철저한 소독절차,<br />
+          편안한 환경의 담부기건강내과<br />
+          내시경 클리닉입니다.<br />
+          <br />
+          <br />
+        </p>
+        <p className="desc">
+          연세건강드림내과의 내시경 클리닉은<br />
+          풍부한 경험을 갖춘
+          <span className="desc" style={{ color: "blue" }}>
+            소화기내시경 세부전문의로부터<br />
+            전문적이고 안전한 검사를 제공합니다.<br />
+            <br />
+            <br />
+          </span>
+        </p>
+      </div>
       <Element
         style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh05})`, backgroundSize: 'cover' }}
       >
@@ -248,8 +294,8 @@ const Page4 = () => {
 
   return (
     <main className="content">
-       {/* 건강 클리닉 설명 */}
-       < div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }
+      {/* 건강 클리닉 설명 */}
+      < div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }
       }>
         <p style={{ margin: "0 0 3px 0", padding: "0px", color: "lightsteelblue", fontSize: "30px", fontWeight: "bold", textAlign: "center" }}>
           <br />[초음파 검사란?]<br /><br />
@@ -569,8 +615,8 @@ function App() {
       <div className="grid-container-nav">
         <NavLink to="/page1" className={({ isActive }) =>
           isActive ? "grid-item active" : "grid-item"
-        }>건강검진센터</NavLink>
-        <NavLink to="/page2" className="grid-item">담부기건강내과</NavLink>
+        }>담부기건강내과</NavLink>
+        <NavLink to="/page2" className="grid-item">건강검진센터</NavLink>
         <NavLink to="/page3" className="grid-item">내시경 클리닉</NavLink>
         <NavLink to="/page4" className="grid-item">초음파 클리닉</NavLink>
         <NavLink to="/page5" className="grid-item">건강 클리닉</NavLink>
