@@ -5,6 +5,7 @@ const ImageSlider = ({ images, height }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false); // 현재 애니메이션 상태
   const sliderRef = useRef(null);
+  const autoSlideInterval = useRef(null); // 자동 슬라이드 인터벌 참조
 
   const totalSlides = images.length;
 
@@ -45,6 +46,26 @@ const ImageSlider = ({ images, height }) => {
     }
   }, [currentIndex, isTransitioning]);
 
+  useEffect(() => {
+    // 자동 슬라이더 시작
+    startAutoSlide();
+
+    // 컴포넌트 언마운트 시 인터벌 제거
+    return () => stopAutoSlide();
+  }, []);
+
+  const startAutoSlide = () => {
+    autoSlideInterval.current = setInterval(() => {
+      nextSlide();
+    }, 3000); // 2초마다 실행
+  };
+
+  const stopAutoSlide = () => {
+    if (autoSlideInterval.current) {
+      clearInterval(autoSlideInterval.current);
+    }
+  };
+
   const goToSlide = (index) => {
     if (isTransitioning) return;
     setCurrentIndex(index);
@@ -56,6 +77,7 @@ const ImageSlider = ({ images, height }) => {
 
   const handleTouchStart = (e) => {
     touchStartRef.current = e.touches[0].clientX;
+    stopAutoSlide(); // 터치 시 자동 슬라이더 중지
   };
 
   const handleTouchMove = (e) => {
@@ -72,6 +94,8 @@ const ImageSlider = ({ images, height }) => {
 
     touchStartRef.current = null;
     touchEndRef.current = null;
+
+    startAutoSlide(); // 터치 종료 후 자동 슬라이더 재시작
   };
 
   return (
