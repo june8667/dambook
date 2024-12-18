@@ -285,6 +285,21 @@ const Page5 = () => {
 const Page6 = () => {
   return (
     <main className="content">
+      <Element
+        style={{ height: "50px" }}
+      ></Element>
+
+      {/* 비급여항목고지설명 */}
+      <div style={{ display : "flext", flexDirection : "column",  padding :"10px", backgroundColor: "white", justifyItems: "center"}}>
+          <p style={{margin : "0 0 3px 0", padding : "0px", color : "lightsteelblue",  fontSize : "30px", fontWeight: "bold", textAlign: "center"}}>
+          <br/>[비급여항목고지]<br/><br/>
+          </p>
+          <p style={{margin : 0, padding : "0px", color: "grey",   fontSize : "16px", textAlign: "center"}}>
+            의료법 제 45조 제1항 및 제2항과 동법 시행규칙<br/>
+            제 42조의 제1항, 제2항 및 제3항에 의하여<br/>
+            비급여 진료 비용을 안내드립니다.
+          </p>
+      </div>
       <div class="grid-container">
         <div class="grid-container-item">항목</div>
         <div class="grid-container-item">검사 종류</div>
@@ -628,9 +643,11 @@ function App() {
             전화번호 : 02-466-4646<br/>
             사업자등록번호 : XXX-XX-XXXXX<br/>
             <br/>
-            <br/>
           </p>
       </div>
+      <Element
+        style={{ height: "30px" }}
+      ></Element>
 
 
       {/* 하단 고정 네비게이션 */}
