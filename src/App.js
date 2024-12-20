@@ -3,6 +3,7 @@ import './App.css';
 import { Element } from "react-scroll";
 import ImageSlider from "./ImageSlider";
 import useHeight from "./util";
+import ImageLoader from "./ImageLoader";
 
 import { BrowserRouter as Router, Route, NavLink, Routes, useNavigate } from 'react-router-dom';
 
@@ -11,18 +12,42 @@ import upArrow from './img/b-close.png';
 import downArrow from './img/b-open.png';
 
 // 연세건강드리임내과 훅킹 이미지
-import ysh01 from './img/ysh/ysh-01.jpg';
-import ysh02 from './img/ysh/ysh-02.jpg';
-import ysh03 from './img/ysh/ysh-03.jpg';
-import ysh04 from './img/ysh/ysh-04.jpg';
-import ysh05 from './img/ysh/ysh-05.jpg';
-import ysh06 from './img/ysh/ysh-06.jpg';
-import ysh07 from './img/ysh/ysh-07.jpg';
+// import ysh01 from './img/ysh/ysh-01.jpg';
+// import ysh02 from './img/ysh/ysh-02.jpg';
+// import ysh03 from './img/ysh/ysh-03.jpg';
+// import ysh04 from './img/ysh/ysh-04.jpg';
+// import ysh05 from './img/ysh/ysh-05.jpg';
+// import ysh06 from './img/ysh/ysh-06.jpg';
+// import ysh07 from './img/ysh/ysh-07.jpg';
+// json-server로 이동
+
 
 {/* Page1 : 담부기건강내과*/ }
 const Page1 = () => {
 
-  const images = [ysh01, ysh02, ysh03];
+  // const images = [ysh01, ysh02, ysh03];
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);  // 로딩 상태
+
+  useEffect(() => {
+    // DB에서 이미지 목록 가져오기
+    fetch('http://localhost:4000/images')  // db.json의 이미지 경로
+      .then(response => response.json())
+      .then(jsonData => {
+        // id가 3, 4, 5인 이미지들만 필터링
+        console.log(jsonData);
+        const filteredImages = jsonData.filter(image => [1, 2, 3, 4].includes(image.id));
+        const filteredImageSrc = filteredImages.map(image => image.src);
+        console.log(filteredImageSrc);
+        setImages(filteredImageSrc);
+        setLoading(false);  
+      })
+      .catch(error => {
+        console.error('Error fetching images:', error);
+        setLoading(false);  // 오류가 발생해도 로딩 상태를 해제
+      });
+  }, []);
+
 
   const height  = useHeight();
 
@@ -61,6 +86,7 @@ const Page1 = () => {
           <br />[의료진 소개]<br /><br />
         </p>
       </div>
+      <ImageLoader id={1}></ImageLoader>
       <Element
         name="section1"
         id="section1"
@@ -137,9 +163,8 @@ const Page2 = () => {
 
   return (
     <main className="content">
-      <Element
-        style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh01})`, backgroundSize: 'cover' }}
-      >
+      <Element>
+        <ImageLoader id={4}></ImageLoader>
       </Element>
       {/* 건강검진센터 설명 */}
       <div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }}>
@@ -166,17 +191,15 @@ const Page2 = () => {
         style={{ height: `${height / 2}px` }}
       >
       </Element>
-      <Element
-        style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh02})`, backgroundSize: 'cover' }}
-      >
+      <Element>
+        <ImageLoader id={5}></ImageLoader>
       </Element>
       <Element
         style={{ height: `${height / 2}px` }}
       >
       </Element>
-      <Element
-        style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh03})`, backgroundSize: 'cover' }}
-      >
+      <Element>
+        <ImageLoader id={5}></ImageLoader>
       </Element>
     </main>
   )
@@ -189,9 +212,8 @@ const Page3 = () => {
 
   return (
     <main className="content">
-      <Element
-        style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh04})`, backgroundSize: 'cover' }}
-      >
+      <Element>
+        <ImageLoader id={6}></ImageLoader>
       </Element>
       {/* 담부기내과 내시경클리닉 설명 */}
       <div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }}>
@@ -216,17 +238,15 @@ const Page3 = () => {
           </span>
         </p>
       </div>
-      <Element
-        style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh05})`, backgroundSize: 'cover' }}
-      >
+      <Element>
+        <ImageLoader id={2}></ImageLoader>
       </Element>
       <Element
         style={{ height: `${height / 2}px` }}
       >
       </Element>
-      <Element
-        style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh06})`, backgroundSize: 'cover' }}
-      >
+      <Element>
+        <ImageLoader id={0}></ImageLoader>
       </Element>
     </main>
   )
@@ -268,9 +288,8 @@ const Page4 = () => {
           <br />
         </p>
       </div >
-      <Element
-        style={{ height: `${height / 2}px`, backgroundImage: `url(${ysh07})`, backgroundSize: 'cover' }}
-      >
+      <Element>
+        <ImageLoader id={1}></ImageLoader>
       </Element>
 
       {/* <Element name="section2" id="section2" className={`section2 ${inView ? 'in-view' : ''}`} style={{ height: `${height}px` }}> */}
@@ -495,6 +514,7 @@ const Page6 = () => {
 }
 
 function App() {
+  
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const [isSubMenuOpen, setIsSubMenuOpen] = useState([

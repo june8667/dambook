@@ -1,0 +1,12 @@
+.ImageLoader {
+    display: flex;
+    flex-direction: column;
+    /* 세로 방향 정렬 */
+    justify-content: center;
+    /* 세로 가운데 정렬 */
+    align-items: left;
+    /* 세로로 가운데 정렬 */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

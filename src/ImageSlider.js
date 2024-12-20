@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./ImageSlider.css";
 
 const ImageSlider = ({ images, height }) => {
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false); // 현재 애니메이션 상태
   const [dragging, setDragging] = useState(false); // 드래깅 상태
@@ -112,6 +113,10 @@ const ImageSlider = ({ images, height }) => {
       sliderRef.current.style.transform = `translateX(calc(-${(currentIndex + 1) * 100}% + ${currentTranslateX}px))`;
     }
   }, [currentIndex, currentTranslateX]);
+
+  if (images.length === 0) {
+    return <div>No images found</div>;  // 이미지가 없을 경우 표시
+  }
 
   return (
     <div
