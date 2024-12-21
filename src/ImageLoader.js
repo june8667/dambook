@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useHeight from './util';
+import './ImageLoader.css';
 
 function ImageLoader({ id }) {
     const [image, setImage] = useState(null);
@@ -27,9 +28,9 @@ function ImageLoader({ id }) {
 
     console.log('Image data:', image);
     return (
-        <div style={{ height: `${height / 2}px` }}>
+        <div className='ImageLoader' style={{ height: `${height / 2}px` }}>
             {image ? (
-                <img src={image.src} alt={'왜 안되냐'} style={{height:'100%'}}/>
+                <img className='ImageItem' src={image.src} alt={'왜 안되냐'}/>
             ) : (
                 <div>No image found!</div>
             )}

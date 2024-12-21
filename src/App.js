@@ -26,30 +26,35 @@ import downArrow from './img/b-open.png';
 const Page1 = () => {
 
   // const images = [ysh01, ysh02, ysh03];
-  const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);  // 로딩 상태
+  const [imageUrls, setImageUrls] = useState([]);
 
+  // 컴포넌트가 마운트되면 API에서 이미지 데이터를 가져옵니다
   useEffect(() => {
-    // DB에서 이미지 목록 가져오기
-    fetch('http://localhost:4000/images')  // db.json의 이미지 경로
-      .then(response => response.json())
-      .then(jsonData => {
-        // id가 3, 4, 5인 이미지들만 필터링
-        console.log(jsonData);
-        const filteredImages = jsonData.filter(image => [1, 2, 3, 4].includes(image.id));
-        const filteredImageSrc = filteredImages.map(image => image.src);
-        console.log(filteredImageSrc);
-        setImages(filteredImageSrc);
-        setLoading(false);  
-      })
-      .catch(error => {
-        console.error('Error fetching images:', error);
-        setLoading(false);  // 오류가 발생해도 로딩 상태를 해제
-      });
+    const fetchImages = async () => {
+      try {
+        const response = await fetch("http://localhost:4000/images");
+        const data = await response.json();
+         
+        // for문을 사용하여 id가 3, 4, 5인 이미지를 필터링
+         const filteredImages = [];
+         for (let i = 0; i < data.length; i++) {
+           if ([3, 4, 5].includes(Number(data[i].id))) {
+             filteredImages.push(data[i].src); // src만 추출해서 배열에 추가
+           }
+         }
+
+        setImageUrls(filteredImages);
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
+    };
+
+    fetchImages();
   }, []);
 
 
-  const height  = useHeight();
+  const height = useHeight();
 
   const [inView, setInView] = useState({
     section1: false,
@@ -112,7 +117,14 @@ const Page1 = () => {
         style={{ height: `${height / 2}px` }}
       >
       </Element>
-      <ImageSlider images={images} height={300} />
+      <Element
+        name="section2"
+        id="section2"
+        style={{ height: `${height / 2}px` }}
+      >
+        <ImageSlider urls={imageUrls} height={height / 2} />
+      </Element>
+      
       <Element
         name="section3"
         id="section3"
@@ -159,7 +171,7 @@ const Page1 = () => {
 {/* Page2 : 건강검진센터 */ }
 const Page2 = () => {
 
-  const height  = useHeight();
+  const height = useHeight();
 
   return (
     <main className="content">
@@ -207,8 +219,8 @@ const Page2 = () => {
 
 {/* Page3 : 내시경 클리닉 */ }
 const Page3 = () => {
-  
-  const height  = useHeight();
+
+  const height = useHeight();
 
   return (
     <main className="content">
@@ -241,10 +253,6 @@ const Page3 = () => {
       <Element>
         <ImageLoader id={2}></ImageLoader>
       </Element>
-      <Element
-        style={{ height: `${height / 2}px` }}
-      >
-      </Element>
       <Element>
         <ImageLoader id={0}></ImageLoader>
       </Element>
@@ -254,8 +262,8 @@ const Page3 = () => {
 
 {/* Page4 : 초음파 클리닉 */ }
 const Page4 = () => {
-  
-  const height  = useHeight();
+
+  const height = useHeight();
 
   return (
     <main className="content">
@@ -514,7 +522,7 @@ const Page6 = () => {
 }
 
 function App() {
-  
+
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const [isSubMenuOpen, setIsSubMenuOpen] = useState([

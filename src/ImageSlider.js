@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./ImageSlider.css";
 
-const ImageSlider = ({ images, height }) => {
+const ImageSlider = ({ urls, height }) => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false); // 현재 애니메이션 상태
@@ -12,7 +12,7 @@ const ImageSlider = ({ images, height }) => {
   const sliderRef = useRef(null);
   const autoSlideInterval = useRef(null); // 자동 슬라이드 인터벌 참조
 
-  const totalSlides = images.length;
+  const totalSlides = urls.length;
 
   // 다음 슬라이드로 이동
   const nextSlide = () => {
@@ -114,14 +114,13 @@ const ImageSlider = ({ images, height }) => {
     }
   }, [currentIndex, currentTranslateX]);
 
-  if (images.length === 0) {
+  if (urls.length === 0) {
     return <div>No images found</div>;  // 이미지가 없을 경우 표시
   }
 
   return (
     <div
       className="slider"
-      style={{ height: `${height}px` }}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -138,17 +137,15 @@ const ImageSlider = ({ images, height }) => {
         <div
           className="slider-image"
           style={{
-            backgroundImage: `url(${images[totalSlides - 1]})`,
-            height: `${height}px`,
+            backgroundImage: `url(${urls[totalSlides - 1]})`
           }}
         />
-        {images.map((image, index) => (
+        {urls.map((url, index) => (
           <div
             key={index}
             className="slider-image"
             style={{
-              backgroundImage: `url(${image})`,
-              height: `${height}px`,
+              backgroundImage: `url(${url})`
             }}
           />
         ))}
@@ -156,7 +153,7 @@ const ImageSlider = ({ images, height }) => {
         <div
           className="slider-image"
           style={{
-            backgroundImage: `url(${images[0]})`,
+            backgroundImage: `url(${urls[0]})`,
             height: `${height}px`,
           }}
         />
@@ -170,7 +167,7 @@ const ImageSlider = ({ images, height }) => {
       </button>
 
       <div className="dots">
-        {images.map((_, index) => (
+        {urls.map((_, index) => (
           <span
             key={index}
             className={`dot ${currentIndex === index ? "active" : ""}`}
