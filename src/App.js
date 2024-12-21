@@ -11,6 +11,8 @@ import { BrowserRouter as Router, Route, NavLink, Routes, useNavigate } from 're
 import upArrow from './img/b-close.png';
 import downArrow from './img/b-open.png';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 // 연세건강드리임내과 훅킹 이미지
 // import ysh01 from './img/ysh/ysh-01.jpg';
 // import ysh02 from './img/ysh/ysh-02.jpg';
@@ -33,7 +35,7 @@ const Page1 = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await fetch("http://localhost:4000/images");
+        const response = await fetch(`${apiUrl}`);
         const data = await response.json();
          
         // for문을 사용하여 id가 3, 4, 5인 이미지를 필터링

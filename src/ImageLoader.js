@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import useHeight from './util';
 import './ImageLoader.css';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function ImageLoader({ id }) {
     const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -10,7 +12,7 @@ function ImageLoader({ id }) {
 
     useEffect(() => {
         // DB에서 특정 ID의 이미지를 가져오기
-        fetch(`http://localhost:4000/images?id=${id}`)
+        fetch(`${apiUrl}?id=${id}`)
             .then(response => response.json())
             .then(data => {
                 if (data.length > 0) {
