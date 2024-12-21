@@ -30,26 +30,10 @@ function ImageLoader({ id }) {
 
     console.log('Image data:', image);
     return (
-        <div className='ImageLoader' style={{ height: `${height / 2}px` }}>
-            {image ? (
-                <img className='ImageItem' src={image.src} alt={'왜 안되냐'}/>
-            ) : (
-                <div>No image found!</div>
-            )}
+        <div className='ImageLoader' style={{ height: `${height / 2}px`, backgroundImage: image ? `url(${image.src})` : 'none'}}>
+            {!image && <div style={{ fontSize: '2.2rem', color: '#555' }}>No Image</div>}
         </div>
     );
 }
-
-// function ImageGallery() {
-//   return (
-//     <div>
-//       <h1>Image Gallery</h1>
-//       {/* 개별적으로 id를 넘겨줘서 3개의 이미지를 그리기 */}
-//       <LoadImageById id={3} />
-//       <LoadImageById id={1} />
-//       <LoadImageById id={2} />
-//     </div>
-//   );
-// }
 
 export default ImageLoader;
