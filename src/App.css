@@ -1,6 +1,7 @@
 /* 기본 스타일 */
 .App {
-  font-family: Arial, sans-serif;
+  font-family: 'NEXONLv1GothicRegular', sans-serif;
+  line-height: 1.8; /* 줄 간격 조정 (1.6배) */
   position: relative;
   height: 100vh;
   overflow: hidden;
@@ -19,9 +20,9 @@ li {
 }
 
 @font-face {
-  font-family: "establish Retrosans";
+  font-family: "NEXONLv1GothicRegular";
   font-weight: normal;
-  src: url("./font/establish Retrosans.ttf") format("truetype");
+  src: url("./font/NEXONLv1GothicRegular.ttf") format("truetype");
 }
 
 @keyframes fadeIn {
@@ -257,7 +258,6 @@ li {
 }
 
 .section1 {
-  display: flex;
   flex-direction: column; /* 세로 방향 정렬 */
   justify-content: center; /* 세로 가운데 정렬 */
   align-items: left;     /* 세로로 가운데 정렬 */
@@ -268,7 +268,6 @@ li {
 } 
 
 .section2 {
-  display: flex;
   flex-direction: column; /* 세로 방향 정렬 */
   justify-content: center; /* 세로 가운데 정렬 */
   align-items: left;     /* 세로로 가운데 정렬 */
@@ -315,7 +314,7 @@ li {
 
 .section-text.in-view {
   align-items: center;     /* 세로로 가운데 정렬 */
-  font-family: 'establish Retrosans', sans-serif;
+  font-family: 'NEXONLv1GothicRegular', sans-serif;
   font-size: 1.3rem;
   /* text-align: center; */
   text-align: left;
