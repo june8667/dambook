@@ -1,3 +1,7 @@
+# git 저장소 
+https://github.com/june8667/dambook.git
+git@github.com:june8667/dambook.git
+
 # React 배포 (Product Build)
 
 ## yarn build 배포파일 만들기
@@ -99,4 +103,4 @@
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
-    ```
+    ```    
