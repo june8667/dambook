@@ -21,6 +21,26 @@
   transform: scale(1.1);  /* 호버 시 버튼 크기 살짝 커지게 */
 }
 
+/* Active 상태 (모바일에서 터치 시 적용) */
+.swiper-button-next:active,
+.swiper-button-prev:active {
+  background-color: #ff6600;  /* 호버 시 색상 변경 */
+  transform: scale(1.1); /* 살짝 축소 효과 */
+}
+
+/* Reset 상태: 터치 이후 원래 상태로 복귀 */
+.swiper-button-next:focus:not(:active),
+.swiper-button-prev:focus:not(:active) {
+  background-color: rgba(51, 51, 51, 0.7);  /* 배경을 반투명하게 설정 */
+  transform: scale(1); /* 크기 원래대로 복귀 */
+}
+
+/* 모바일 터치와 기본 이벤트 충돌 방지 */
+.swiper-button-next,
+.swiper-button-prev {
+  -webkit-tap-highlight-color: transparent; /* 터치 강조 제거 */
+}
+
 .swiper-button-next::after, .swiper-button-prev::after {
   font-size: 20px;  /* 아이콘 크기 */
   font-weight: bold;
