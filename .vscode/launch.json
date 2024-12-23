@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "type": "msedge",
+            "type": "pwa-chrome",
             "name": "http://localhost:3000/page1",
             "request": "launch",
             "url": "http://localhost:3000/page1"

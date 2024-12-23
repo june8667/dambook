@@ -6,13 +6,23 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "autoprefixer": "^10.4.20",
+    "css-loader": "^7.1.2",
     "json-server": "^1.0.0-beta.3",
+    "postcss": "^8.4.49",
+    "postcss-loader": "^8.1.1",
     "react": "^19.0.0",
+    "react-auto-image-slider": "^1.0.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.0.2",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.9.0",
+    "react-slick": "^0.30.3",
+    "slick-carousel": "^1.8.1",
+    "style-loader": "^4.0.0",
+    "styled-components": "^6.1.13",
+    "swiper": "^11.1.15",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
@@ -42,6 +52,7 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^9.1.0"
+    "concurrently": "^9.1.0",
+    "typescript": "^5.7.2"
   }
 }

@@ -1,61 +1,32 @@
-.slider {
-    position: relative;
-    overflow: hidden;
-    height: 100%;
-  }
-  
-    .slider-images {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    height: 100%;
-    }
+.section0 {
+  overflow: hidden;           /* 넘치는 내용 숨기기 */
+  padding: 0;
+}
 
-    .slider-image {
-    min-width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    }
-  
-  .prev-button,
-  .next-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-    display: none;
-  }
-  
-  .prev-button {
-    left: 10px;
-  }
-  
-  .next-button {
-    right: 10px;
-  }
-  
-  .dots {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-  }
-  
-  .dot {
-    width: 6px;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  
-  .dot.active {
-    background: white;
-  }
+.swiper-button-next, .swiper-button-prev {
+  background-color: rgba(51, 51, 51, 0.7);  /* 배경을 반투명하게 설정 */
+  color: #fff;  /* 기본 글자 색상 */
+  border-radius: 50%;  /* 원형 버튼 */
+  padding: 10px;  /* 버튼 크기 */
+  width: 20px;
+  height: 20px;
+  transition: background-color 0.3s, transform 0.3s;  /* 호버 시 색상과 크기 변화 애니메이션 */
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+  background-color: #ff6600;  /* 호버 시 색상 변경 */
+  transform: scale(1.1);  /* 호버 시 버튼 크기 살짝 커지게 */
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  font-size: 20px;  /* 아이콘 크기 */
+  font-weight: bold;
+}
+
+.swiper-button-next {
+  right: 10px;  /* 우측 위치 */
+}
+
+.swiper-button-prev {
+  left: 10px;  /* 좌측 위치 */
+}

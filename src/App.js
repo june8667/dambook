@@ -37,14 +37,14 @@ const Page1 = () => {
       try {
         const response = await fetch(`${apiUrl}`);
         const data = await response.json();
-         
+
         // for문을 사용하여 id가 3, 4, 5인 이미지를 필터링
-         const filteredImages = [];
-         for (let i = 0; i < data.length; i++) {
-           if ([3, 4, 5].includes(Number(data[i].id))) {
-             filteredImages.push(data[i].src); // src만 추출해서 배열에 추가
-           }
-         }
+        const filteredImages = [];
+        for (let i = 0; i < data.length; i++) {
+          if ([3, 4, 5].includes(Number(data[i].id))) {
+            filteredImages.push(data[i].src); // src만 추출해서 배열에 추가
+          }
+        }
 
         setImageUrls(filteredImages);
       } catch (error) {
@@ -119,13 +119,8 @@ const Page1 = () => {
         style={{ height: `${height / 2}px` }}
       >
       </Element>
-      <Element
-        name="section2"
-        id="section2"
-        style={{ height: `${height / 2}px` }}
-      >
-        <ImageSlider urls={imageUrls} height={height / 2} />
-      </Element>
+
+      <ImageSlider urls={imageUrls} />
       
       <Element
         name="section3"
