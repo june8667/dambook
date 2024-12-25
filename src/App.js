@@ -4,6 +4,7 @@ import { Element } from "react-scroll";
 import ImageSlider from "./ImageSlider";
 import useHeight from "./util";
 import ImageLoader from "./ImageLoader";
+import { useMediaQuery } from 'react-responsive';
 
 import { BrowserRouter as Router, Route, NavLink, Routes, useNavigate } from 'react-router-dom';
 
@@ -27,7 +28,6 @@ const apiUrl = process.env.REACT_APP_API_URL;
 {/* Page1 : 담부기건강내과*/ }
 const Page1 = () => {
 
-  // const images = [ysh01, ysh02, ysh03];
   const [loading, setLoading] = useState(true);  // 로딩 상태
   const [imageUrls, setImageUrls] = useState([]);
 
@@ -87,28 +87,40 @@ const Page1 = () => {
 
   return (
     <main className="content">
+      <ImageSlider urls={imageUrls} />
       {/* 건강검진센터 설명 */}
-      <div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }}>
-        <p style={{ margin: "0 0 3px 0", padding: "0px", color: "lightsteelblue", fontSize: "32px", fontWeight: "bold", textAlign: "center" }}>
-          <br />[의료진 소개]<br /><br />
-        </p>
+      <div className="animated-text" style={{ height: `${height / 4}px`, display: "flex", padding: "0px", backgroundColor: "white", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+        <div>
+          <p style={{ padding: "0px", color: "lightsteelblue", fontSize: "32px", fontWeight: "bold", textAlign: "center" }}>
+            [의료진 소개]
+          </p>
+        </div>
       </div>
-      <ImageLoader id={1}></ImageLoader>
+      <Element style={{ backgroundColor: "#95befd" }}>
+        <div className="animated-text" style={{}} >
+          <br></br>
+          <br></br>
+          <p style={{ margin: "0 0 3px 0", padding: "0px", color: "white", fontSize: "1.3em", fontWeight: "bold", textAlign: "center" }}>상세한 설명과 정확한 진단으로</p>
+          <p style={{ margin: "0 0 10px 0", padding: "0px", color: "white", fontSize: "1.3em", fontWeight: "bold", textAlign: "center" }}>체계적인 진료를 약속드립니다.</p>
+          <p style={{ margin: "0 10px 0 0", padding: "0px", color: "white", fontSize: "1.8em", fontWeight: "bold", textAlign: "center" }}>건강에 대한 꿈이 실현되는</p>
+          <p style={{ margin: "0 10px 0 0", padding: "0px", color: "white", fontSize: "1.8em", fontWeight: "bold", textAlign: "center" }}>건강을 드리는 병원</p>
+          <div class="circle-container">
+            <div class="circle">Merida</div>
+            <div class="circle">S-work<br /></div>
+            <div class="circle">Cervelo<br /></div>
+            <div class="circle">Trek<br /></div>
+          </div>
+        </div>
+      </Element>
+      {/* <Element>
+        <ImageLoader id={1}></ImageLoader>
+      </Element> */}
       <Element
         name="section1"
         id="section1"
         className="section1"
         style={{ height: `${height / 2}px` }}
       >
-        {/* <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
-          당신의 꿈을 응원합니다!
-        </div>
-        <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
-          당신의 자전거는 무엇입니까?
-        </div>
-        <div className={`section-text ${inView.section1 ? "in-view" : ""}`}>
-          당신은 Merida를 탑니까?
-        </div> */}
       </Element>
 
       {/* <Element name="section2" id="section2" className={`section2 ${inView ? 'in-view' : ''}`} style={{ height: `${height}px` }}> */}
@@ -120,8 +132,9 @@ const Page1 = () => {
       >
       </Element>
 
-      <ImageSlider urls={imageUrls} />
-      
+
+
+
       <Element
         name="section3"
         id="section3"
@@ -226,7 +239,7 @@ const Page3 = () => {
       </Element>
       {/* 담부기내과 내시경클리닉 설명 */}
       <div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }}>
-        <p style={{ margin: "0 0 3px 0", padding: "0px", color: "lightsteelblue", fontSize: "30px", fontWeight: "bold", textAlign: "center" }}>
+        <p style={{ margin: "0 0 3px 0", padding: "0px", color: "lightsteelblue", fontSize: "28px", fontWeight: "bold", textAlign: "center" }}>
           <br />[담부기내과 내시경클리닉]<br /><br />
         </p>
         <p className="desc" style={{ fontSize: "20px", color: "black" }}>
@@ -343,7 +356,7 @@ const Page6 = () => {
   return (
     <main className="content">
       {/* 비급여항목고지 설명 */}
-      <div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }}>
+      <div className="animated-text" style={{ display: "flex", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }}>
         <p style={{ margin: "0 0 3px 0", padding: "0px", color: "lightsteelblue", fontSize: "30px", fontWeight: "bold", textAlign: "center" }}>
           <br />[비급여항목고지]<br /><br />
         </p>
@@ -520,6 +533,10 @@ const Page6 = () => {
 
 function App() {
 
+  // 반응형 브레이크포인트 설정
+  const isMobile = useMediaQuery({ maxWidth: 767 }); // Mobile: 최대 너비 767px
+  const isDesktop = useMediaQuery({ minWidth: 768 }); // Desktop: 최소 너비 768px
+
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const [isSubMenuOpen, setIsSubMenuOpen] = useState([
@@ -567,32 +584,49 @@ function App() {
 
 
   return (
-    <div className="App">
-      <div className="header" style={{ height: "10%", width: "100%", padding: "5px", backgroundColor: "white", position: "fixed", zIndex: "500" }}>
-        {/* 햄버거 버튼 */}
-        {!isNavOpen && (
-          <button
-            className="menu-button"
-            onClick={(e) => {
-              e.stopPropagation();
-              toggleNav();
-            }}
-          >
-            ☰
-          </button>
-        )}
+    <div className="App"
+      style={{
+        margin: isDesktop ? '0 auto' : '0',
+        width: isDesktop ? '70%' : '100%',
+        flexDirection: "column",
+        alignItems: "center"
+      }}
+    >
+      <div className="header">
+        <div>
+          {/* 햄버거 버튼 */}
+          {!isNavOpen && (
+            <button
+              className="menu-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleNav();
+              }}
+            >
+              ☰
+            </button>
+          )}
+        </div>
+
+
+        {/* 버튼 밑에 2x3 그리드 */}
+        <div className="grid-container-nav">
+          <NavLink to="/page1" className={({ isActive }) =>
+            isActive ? "grid-item active" : "grid-item"
+          }>담부기건강내과</NavLink>
+          <NavLink to="/page2" className="grid-item">건강검진센터</NavLink>
+          <NavLink to="/page3" className="grid-item">내시경 클리닉</NavLink>
+          <NavLink to="/page4" className="grid-item">초음파 클리닉</NavLink>
+          <NavLink to="/page5" className="grid-item">건강 클리닉</NavLink>
+          <NavLink to="/page6" className="grid-item">비급여항목고지</NavLink>
+        </div>
       </div>
-      {/* 버튼 밑에 2x3 그리드 */}
-      <div className="grid-container-nav">
-        <NavLink to="/page1" className={({ isActive }) =>
-          isActive ? "grid-item active" : "grid-item"
-        }>담부기건강내과</NavLink>
-        <NavLink to="/page2" className="grid-item">건강검진센터</NavLink>
-        <NavLink to="/page3" className="grid-item">내시경 클리닉</NavLink>
-        <NavLink to="/page4" className="grid-item">초음파 클리닉</NavLink>
-        <NavLink to="/page5" className="grid-item">건강 클리닉</NavLink>
-        <NavLink to="/page6" className="grid-item">비급여항목고지</NavLink>
-      </div>
+      {/* 메인 콘텐츠 */}
+      <Element
+        style={{ height: "70px" }}
+      ></Element>
+
+
 
       {/* 네비게이션 오버레이 */}
       <div style={{ zIndex: "10000" }} className={`overlay ${isNavOpen ? 'visible' : ''}`} onClick={closeNav}>
@@ -677,25 +711,21 @@ function App() {
         {/* 반투명 영역 */}
         <div className="transparent-section" onClick={closeNav}></div>
       </div>
-
-      {/* 메인 콘텐츠 */}
-      <Element
-        style={{ height: "50px" }}
-      ></Element>
-
-      <Routes>
-        <Route path="/page1" element={<Page1 />} />
-        <Route path="/page2" element={<Page2 />} />
-        <Route path="/page3" element={<Page3 />} />
-        <Route path="/page4" element={<Page4 />} />
-        <Route path="/page5" element={<Page5 />} />
-        <Route path="/page6" element={<Page6 />} />
-      </Routes>
+      <div>
+        <Routes>
+          <Route path="/page1" element={<Page1 />} />
+          <Route path="/page2" element={<Page2 />} />
+          <Route path="/page3" element={<Page3 />} />
+          <Route path="/page4" element={<Page4 />} />
+          <Route path="/page5" element={<Page5 />} />
+          <Route path="/page6" element={<Page6 />} />
+        </Routes>
+      </div>
 
       {/* 하단 설명 */}
-      <div style={{ padding: "10px", backgroundColor: "gray", color: "white" }}>
-        <p style={{ margin: "0 0 3px 0", padding: "0px", fontSize: "15px", fontWeight: "bold" }}>담부기건강내과의원</p>
-        <p style={{ margin: 0, padding: "0px", fontSize: "12px" }}>
+      <div style={{ width: "100%", padding: "10px", backgroundColor: "gray", color: "white" }}>
+        <p style={{ margin: "0 0 3px 0", paddingLeft: "10px", fontSize: "15px", fontWeight: "bold" }}>담부기건강내과의원</p>
+        <p style={{ margin: 0, padding: "10px", fontSize: "12px" }}>
           주소: 서울특별시 XX구 XX로 220 3층 (논현동, 중앙대파빌딩)<br />
           전화번호 : 02-466-4646<br />
           사업자등록번호 : XXX-XX-XXXXX<br />

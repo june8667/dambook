@@ -36,7 +36,8 @@
 }
 
 /* 모바일 터치와 기본 이벤트 충돌 방지 */
-.swiper-button-next,
+
+
 .swiper-button-prev {
   -webkit-tap-highlight-color: transparent; /* 터치 강조 제거 */
 }
@@ -62,6 +63,12 @@
 /* 전체 화면 모달 */
 .image-container {
   text-align: center;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 

@@ -13,7 +13,7 @@ const ImageSlider = ({ urls }) => {
     setCurrentIndex(index); // 클릭한 이미지 인덱스 설정
     setIsFullScreen(!isFullScreen); // 전체 화면 토글
   };
-
+  
   if (!urls || urls.length === 0) {
     return <div>No images available</div>;
   }
