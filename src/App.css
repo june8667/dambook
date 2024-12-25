@@ -50,6 +50,15 @@ li {
   gap: 5.0vw; /* 원 사이 간격 */
   background-color: #95befd; /* 배경 색상 */
   padding: 20px;
+}
+
+/* 컨테이너 스타일 */
+.spec-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 
 }
 

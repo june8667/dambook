@@ -3,7 +3,7 @@ import './App.css';
 import { Element } from "react-scroll";
 import ImageSlider from "./ImageSlider";
 import useHeight from "./util";
-import ImageLoader from "./ImageLoader";
+import {ImageLoader, ImageLoaderSrc} from "./ImageLoader";
 import { useMediaQuery } from 'react-responsive';
 
 import { BrowserRouter as Router, Route, NavLink, Routes, useNavigate } from 'react-router-dom';
@@ -109,6 +109,34 @@ const Page1 = () => {
             <div class="circle">S-work<br /></div>
             <div class="circle">Cervelo<br /></div>
             <div class="circle">Trek<br /></div>
+          </div>
+        </div>
+      </Element>
+      <Element style={{ height: "100%", width: "100%", backgroundColor: "#d9f8dc" }}>
+        <div class="spec-container">
+          <ImageLoaderSrc id={8}></ImageLoaderSrc>
+          <div style={{ margin: "10px 10px 10px 10px", padding : "10px", backgroundColor : "white", lineHeight: "1.7" }} >
+            <p style={{ margin: "0 0 3px 0", padding: "0px", color: "black", fontSize: "1.3em", fontWeight: "bold", textAlign: "left" }}>내과전문의</p>
+            <p style={{ margin: "0 0 3px 0", padding: "0px", color: "black", fontSize: "1.6em", fontWeight: "bold", textAlign: "left" }}>김담북 대표원장</p>
+            <p style={{ margin: "0 0 3px 0", padding: "0px", color: "black", fontSize: "1em", textAlign: "left" }}>
+              <br></br>
+              내과전문의<br></br>
+              소화기내과 분과전문의 <br></br>
+              소화기내시경 세부전문의<br></br>
+              전공의 수련 책임지도 전문의<br></br>
+              한림대학교 의과대학 졸업<br></br>
+              서울대학교병원 내과 동문<br></br>
+              전) 서울의료원 소화기센터 과장<br></br>
+              <br></br>
+              대한내과회 평생회원<br></br>
+              대한소화기학회 평생회원<br></br>
+              대한고혈합학회 회원<br></br>
+              대한당뇨병학회 회원<br></br>
+              대한영상의학회 유방촬영용장치 품질관리교육 수료<br></br>
+              춘천캄파놀로 그란폰도 완주
+              <br></br>
+            </p>
+
           </div>
         </div>
       </Element>
@@ -235,7 +263,7 @@ const Page3 = () => {
   return (
     <main className="content">
       <Element>
-        <ImageLoader id={6}></ImageLoader>
+        <ImageLoader id={100}></ImageLoader>
       </Element>
       {/* 담부기내과 내시경클리닉 설명 */}
       <div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }}>
