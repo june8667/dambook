@@ -3,7 +3,7 @@ import './App.css';
 import { Element } from "react-scroll";
 import ImageSlider from "./ImageSlider";
 import useHeight from "./util";
-import {ImageLoader, ImageLoaderSrc} from "./ImageLoader";
+import { ImageLoader, ImageLoaderSrc } from "./ImageLoader";
 import { useMediaQuery } from 'react-responsive';
 
 import { BrowserRouter as Router, Route, NavLink, Routes, useNavigate } from 'react-router-dom';
@@ -115,9 +115,14 @@ const Page1 = () => {
       <Element style={{ height: "100%", width: "100%", backgroundColor: "#d9f8dc" }}>
         <div class="spec-container">
           <ImageLoaderSrc id={8}></ImageLoaderSrc>
-          <div style={{ margin: "10px 10px 10px 10px", padding : "10px", backgroundColor : "white", lineHeight: "1.7" }} >
-            <p style={{ margin: "0 0 3px 0", padding: "0px", color: "black", fontSize: "1.3em", fontWeight: "bold", textAlign: "left" }}>내과전문의</p>
-            <p style={{ margin: "0 0 3px 0", padding: "0px", color: "black", fontSize: "1.6em", fontWeight: "bold", textAlign: "left" }}>김담북 대표원장</p>
+          <div style={{ margin: "10px 10px 10px 10px", padding: "10px", backgroundColor: "white", lineHeight: "1.7" }} >
+            <div className="content1">
+              <div class="bar"></div>
+              <div>
+                <p style={{ margin: "0 0 0 0", padding: "0px", color: "black", fontSize: "1.3em", fontWeight: "bold", textAlign: "left" }}>내과전문의</p>
+                <p style={{ margin: "0 0 3px 0", padding: "0px", color: "black", fontSize: "1.6em", fontWeight: "bold", textAlign: "left" }}>김담북 대표원장</p>
+              </div>
+            </div>
             <p style={{ margin: "0 0 3px 0", padding: "0px", color: "black", fontSize: "1em", textAlign: "left" }}>
               <br></br>
               내과전문의<br></br>
@@ -621,7 +626,7 @@ function App() {
       }}
     >
       <div className="header">
-        <div>
+        <div style={{ position: "relative", padding:"5px" }}>
           {/* 햄버거 버튼 */}
           {!isNavOpen && (
             <button
@@ -634,9 +639,16 @@ function App() {
               ☰
             </button>
           )}
+          <div 
+            className="headerTitle"
+            style={{ 
+              
+            }}>
+            삼성
+            <span style={{color:"blue"}}>나은</span>
+            내과
+          </div>
         </div>
-
-
         {/* 버튼 밑에 2x3 그리드 */}
         <div className="grid-container-nav">
           <NavLink to="/page1" className={({ isActive }) =>
