@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:api": "json-server --watch public/db.json --port 4000",
+    "start:api": "json-server --watch build/db.json --port 4000",
     "start:dev": "concurrently \"yarn start\" \"yarn start:api\"",
     "start-json-server": "json-server --watch db.json --port 4000",
     "build": "react-scripts build",
