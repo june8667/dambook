@@ -5,6 +5,7 @@ import ImageSlider from "./ImageSlider";
 import useHeight from "./util";
 import { ImageLoader, ImageLoaderSrc } from "./ImageLoader";
 import { useMediaQuery } from 'react-responsive';
+import axios from "axios"
 
 import { BrowserRouter as Router, Route, NavLink, Routes, useNavigate } from 'react-router-dom';
 
@@ -35,18 +36,19 @@ const Page1 = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await fetch(`${apiUrl}`);
-        const data = await response.json();
+        await fetch(`${apiUrl}/`)
+          .then(response => response.json())
+          .then(data => {
+            // for문을 사용하여 id가 3, 4, 5인 이미지를 필터링
+            const filteredImages = [];
+            for (let i = 0; i < data.length; i++) {
+              if ([3, 4, 5].includes(Number(data[i].id))) {
+                filteredImages.push(data[i].src); // src만 추출해서 배열에 추가
+              }
+            }
+            setImageUrls(filteredImages);
+          })
 
-        // for문을 사용하여 id가 3, 4, 5인 이미지를 필터링
-        const filteredImages = [];
-        for (let i = 0; i < data.length; i++) {
-          if ([3, 4, 5].includes(Number(data[i].id))) {
-            filteredImages.push(data[i].src); // src만 추출해서 배열에 추가
-          }
-        }
-
-        setImageUrls(filteredImages);
       } catch (error) {
         console.error("Error fetching images:", error);
       }
@@ -626,7 +628,7 @@ function App() {
       }}
     >
       <div className="header">
-        <div style={{ position: "relative", padding:"5px" }}>
+        <div style={{ position: "relative", padding: "5px" }}>
           {/* 햄버거 버튼 */}
           {!isNavOpen && (
             <button
@@ -639,13 +641,13 @@ function App() {
               ☰
             </button>
           )}
-          <div 
+          <div
             className="headerTitle"
-            style={{ 
-              
+            style={{
+
             }}>
             삼성
-            <span style={{color:"blue"}}>나은</span>
+            <span style={{ color: "blue" }}>나은</span>
             내과
           </div>
         </div>

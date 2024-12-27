@@ -16,7 +16,7 @@ function ImageLoader({ id }) {
             .then(response => response.json())
             .then(data => {
                 if (data.length > 0) {
-                    setImage(data[0]); // 첫 번째 이미지 데이터 가져오기
+                    setImage(data[id]); // 첫 번째 이미지 데이터 가져오기
                 }
                 setLoading(false);
             })
