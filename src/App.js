@@ -13,7 +13,11 @@ import { BrowserRouter as Router, Route, NavLink, Routes, useNavigate } from 're
 import upArrow from './img/b-close.png';
 import downArrow from './img/b-open.png';
 
-const apiUrl = process.env.REACT_APP_API_URL;
+//const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = "https://port-0-dambook-image-server-m56p8flb7c247aba.sel4.cloudtype.app/images";
+
+
+
 
 // 연세건강드리임내과 훅킹 이미지
 // import ysh01 from './img/ysh/ysh-01.jpg';

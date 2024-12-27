@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import useHeight from './util';
 import './ImageLoader.css';
 
-const apiUrl = process.env.REACT_APP_API_URL;
+//const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = "https://port-0-dambook-image-server-m56p8flb7c247aba.sel4.cloudtype.app/images";
 
 function ImageLoader({ id }) {
     const [image, setImage] = useState(null);
