@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import useHeight from './util';
 import './ImageLoader.css';
 
-//const apiUrl = process.env.REACT_APP_API_URL;
-const apiUrl = "https://port-0-dambook-image-server-m56p8flb7c247aba.sel4.cloudtype.app/images";
+const apiUrl = process.env.REACT_APP_API_URL;
+//const apiUrl = "https://port-0-dambook-image-server-m56p8flb7c247aba.sel4.cloudtype.app/images";
 
 function ImageLoader({ id }) {
     const [image, setImage] = useState(null);
@@ -12,18 +12,18 @@ function ImageLoader({ id }) {
     const height = useHeight();
 
     useEffect(() => {
-        // DB에서 특정 ID의 이미지를 가져오기
-        fetch(`${apiUrl}?id=${id}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.length > 0) {
-                    setImage(data[id]); // 첫 번째 이미지 데이터 가져오기
-                }
-                setLoading(false);
-            })
-
-            .catch(error => console.error('Error fetching image:', error));
-    }, [id]);
+        // 서버에서 id에 맞는 이미지 데이터를 가져오기
+        fetch(`${apiUrl}/api/images`)
+          .then(response => response.json())
+          .then(data => {
+            // id에 해당하는 이미지 찾기
+            const selectedImage = data.find(image => image.id === id);
+            setImage(selectedImage);
+            setLoading(false);
+          })
+          .catch(error => console.error('Error fetching data:', error));
+          
+      }, [id]); // id가 변경될 때마다 다시 요청
 
     if (loading) {
         return <div>Loading...</div>;
@@ -33,7 +33,7 @@ function ImageLoader({ id }) {
     return (
         <div className='ImageLoader'
             style={{
-                backgroundImage: image ? `url(${image.src})` : 'none',
+                backgroundImage: image ? `url(${apiUrl}${image.src})` : 'none',
                 height: `${height / 2}px`,
                 backgroundSize: "cover"
             }}
@@ -51,18 +51,18 @@ function ImageLoaderSrc({ id }) {
     const height = useHeight();
 
     useEffect(() => {
-        // DB에서 특정 ID의 이미지를 가져오기
-        fetch(`${apiUrl}?id=${id}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.length > 0) {
-                    setImage(data[0]); // 첫 번째 이미지 데이터 가져오기
-                }
-                setLoading(false);
-            })
-
-            .catch(error => console.error('Error fetching image:', error));
-    }, [id]);
+        // 서버에서 id에 맞는 이미지 데이터를 가져오기
+        fetch(`${apiUrl}/api/images`)
+          .then(response => response.json())
+          .then(data => {
+            // id에 해당하는 이미지 찾기
+            const selectedImage = data.find(image => image.id === id);
+            setImage(selectedImage);
+            setLoading(false);
+          })
+          .catch(error => console.error('Error fetching data:', error));
+          
+      }, [id]); // id가 변경될 때마다 다시 요청
 
     if (loading) {
         return <div>Loading...</div>;
@@ -75,7 +75,7 @@ function ImageLoaderSrc({ id }) {
             style={{
             }}
         >
-            <img src={image.src} alt="example" 
+            <img src={`${apiUrl}${image.src}`} alt="example"
                 style={{width: "100%", height :"100%"}}
             />
             {!image && <div style={{ fontSize: '2.2rem', color: '#555' }}>No Image</div>}

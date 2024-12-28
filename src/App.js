@@ -13,8 +13,8 @@ import { BrowserRouter as Router, Route, NavLink, Routes, useNavigate } from 're
 import upArrow from './img/b-close.png';
 import downArrow from './img/b-open.png';
 
-//const apiUrl = process.env.REACT_APP_API_URL;
-const apiUrl = "https://port-0-dambook-image-server-m56p8flb7c247aba.sel4.cloudtype.app/images";
+const apiUrl = process.env.REACT_APP_API_URL;
+//const apiUrl = "https://port-0-dambook-image-server-m56p8flb7c247aba.sel4.cloudtype.app/images";
 
 
 
@@ -38,27 +38,16 @@ const Page1 = () => {
 
   // 컴포넌트가 마운트되면 API에서 이미지 데이터를 가져옵니다
   useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        await fetch(`${apiUrl}/`)
-          .then(response => response.json())
-          .then(data => {
-            // for문을 사용하여 id가 3, 4, 5인 이미지를 필터링
-            const filteredImages = [];
-            for (let i = 0; i < data.length; i++) {
-              if ([3, 4, 5].includes(Number(data[i].id))) {
-                filteredImages.push(data[i].src); // src만 추출해서 배열에 추가
-              }
-            }
-            setImageUrls(filteredImages);
-          })
-
-      } catch (error) {
-        console.error("Error fetching images:", error);
-      }
-    };
-
-    fetchImages();
+    // 서버에서 모든 이미지 데이터를 받아오기
+    fetch(`${apiUrl}/api/images`)
+      .then(response => response.json())
+      .then(data => {
+        // id가 3, 4, 5인 이미지들의 src를 추출하여 imageUrls 배열에 저장
+        const selectedImages = data.filter(image => [3, 4, 5].includes(image.id));
+        const imageUrlsArray = selectedImages.map(image => `${apiUrl}${image.src}`);
+        setImageUrls(imageUrlsArray);
+      })
+      .catch(error => console.error('Error fetching data:', error));
   }, []);
 
 
@@ -274,7 +263,7 @@ const Page3 = () => {
   return (
     <main className="content">
       <Element>
-        <ImageLoader id={100}></ImageLoader>
+        <ImageLoader id={5}></ImageLoader>
       </Element>
       {/* 담부기내과 내시경클리닉 설명 */}
       <div className="animated-text" style={{ display: "flext", flexDirection: "column", padding: "10px", backgroundColor: "white", justifyItems: "center" }}>
@@ -303,7 +292,7 @@ const Page3 = () => {
         <ImageLoader id={2}></ImageLoader>
       </Element>
       <Element>
-        <ImageLoader id={0}></ImageLoader>
+        <ImageLoader id={6}></ImageLoader>
       </Element>
     </main>
   )
